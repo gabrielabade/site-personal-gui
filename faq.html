@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perguntas Frequentes - Personal Trainer Guilherme Matheus | Barretos SP</title>
+  <meta name="description"
+    content="Tire suas dúvidas sobre personal trainer, treinos e consultoria com Guilherme Matheus. Respostas para perguntas frequentes em Barretos SP.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-brand">
+          <a href="index.html">
+            <img src="images/logo.png" alt="Personal Trainer Guilherme Matheus" class="logo">
+          </a>
+        </div>
+
+        <ul class="nav-menu">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="depoimentos.html">Depoimentos</a></li>
+          <li><a href="galeria.html">Galeria</a></li>
+          <li><a href="dicas.html">Dicas</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://wa.me/5517982126171?text=Olá! Quero agendar uma aula experimental!" class="btn btn-primary"
+            target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            Aula Experimental
+          </a>
+          <button class="mobile-menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header faq-header">
+    <div class="container">
+      <div class="page-header-content">
+        <h1>Perguntas Frequentes</h1>
+        <p>Tire todas as suas dúvidas sobre treino personalizado, consultoria e métodos</p>
+        <div class="header-stats">
+          <div class="stat-item">
+            <div class="stat-number">50+</div>
+            <div class="stat-label">Dúvidas Respondidas</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">24h</div>
+            <div class="stat-label">Resposta Garantida</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Transparência</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Search -->
+  <section class="faq-search">
+    <div class="container">
+      <div class="search-content">
+        <h2>Como posso ajudar você?</h2>
+        <p>Digite sua dúvida ou navegue pelas categorias abaixo</p>
+        <div class="search-box">
+          <input type="text" id="faqSearch" placeholder="Digite sua pergunta aqui..." autocomplete="off">
+          <button type="button" class="search-btn">
+            <i class="fas fa-search"></i>
+          </button>
+          <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Categories -->
+  <section class="faq-categories">
+    <div class="container">
+      <h2>Categorias de Dúvidas</h2>
+      <div class="categories-grid">
+        <button class="category-card active" data-category="all">
+          <div class="category-icon">
+            <i class="fas fa-list"></i>
+          </div>
+          <h3>Todas</h3>
+          <span class="question-count">25</span>
+        </button>
+
+        <button class="category-card" data-category="getting-started">
+          <div class="category-icon">
+            <i class="fas fa-play"></i>
+          </div>
+          <h3>Primeiros Passos</h3>
+          <span class="question-count">8</span>
+        </button>
+
+        <button class="category-card" data-category="training">
+          <div class="category-icon">
+            <i class="fas fa-dumbbell"></i>
+          </div>
+          <h3>Treino</h3>
+          <span class="question-count">12</span>
+        </button>
+
+        <button class="category-card" data-category="nutrition">
+          <div class="category-icon">
+            <i class="fas fa-apple-alt"></i>
+          </div>
+          <h3>Nutrição</h3>
+          <span class="question-count">7</span>
+        </button>
+
+        <button class="category-card" data-category="pricing">
+          <div class="category-icon">
+            <i class="fas fa-dollar-sign"></i>
+          </div>
+          <h3>Valores</h3>
+          <span class="question-count">5</span>
+        </button>
+
+        <button class="category-card" data-category="online">
+          <div class="category-icon">
+            <i class="fas fa-video"></i>
+          </div>
+          <h3>Online</h3>
+          <span class="question-count">6</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Content -->
+  <section class="faq-content">
+    <div class="container">
+      <div class="faq-wrapper">
+        <!-- Popular Questions -->
+        <div class="popular-questions">
+          <h2>
+            <i class="fas fa-fire"></i>
+            Perguntas Mais Populares
+          </h2>
+          <div class="popular-list">
+            <a href="#faq-1" class="popular-item">
+              <span>Como funciona a aula experimental?</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#faq-15" class="popular-item">
+              <span>Qual o valor do treino personalizado?</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#faq-8" class="popular-item">
+              <span>Quanto tempo para ver resultados?</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#faq-20" class="popular-item">
+              <span>Como funciona o treino online?</span>
+              <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- FAQ Items -->
+        <div class="faq-items">
+          <!-- Getting Started -->
+          <div class="faq-item" data-category="getting-started" id="faq-1">
+            <div class="faq-question">
+              <h3>Como funciona a aula experimental gratuita?</h3>
+              <button class="faq-toggle">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p>A aula experimental é sua oportunidade de conhecer meu método de trabalho sem compromisso!</p>
+                <div class="answer-highlights">
+                  <div class="highlight-item">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                      <strong>Duração:</strong>
+                      <span>45-60 minutos</span>
+                    </div>
+                  </div>
+                  <div class="highlight-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                      <strong>Local:</strong>
+                      <span>Academia ou ao ar livre</span>
+                    </div>
+                  </div>
+                  <div class="highlight-item">
+                    <i class="fas fa-clipboard-list"></i>
+                    <div>
+                      <strong>Inclui:</strong>
+                      <span>Avaliação física + treino adaptado</span>
+                    </div>
+                  </div>
+                </div>
+                <p><strong>O que acontece na aula:</strong></p>
+                <ul>
+                  <li>Conversa sobre seus objetivos e histórico</li>
+                  <li>Avaliação física básica (composição corporal, flexibilidade)</li>
+                  <li>Treino personalizado de acordo com seu nível</li>
+                  <li>Orientações sobre técnica e execução</li>
+                  <li>Esclarecimento de dúvidas sobre o programa</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="getting-started" id="faq-2">
+            <div class="faq-question">
+              <h3>Preciso ter experiência com exercícios?</h3>
+              <button class="faq-toggle">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p><strong>Absolutamente não!</strong> Trabalho com pessoas de todos os níveis, desde iniciantes
+                  completos até atletas avançados.</p>
+
+                <div class="level-cards">
+                  <div class="level-card">
+                    <h4>🌱 Iniciante</h4>
+                    <p>Nunca treinou ou está parado há muito tempo? Perfeito! Vamos começar do básico com segurança.</p>
+                  </div>
+                  <div class="level-card">
+                    <h4>💪 Intermediário</h4>
+                    <p>Já treina mas quer evoluir? Vamos otimizar seus resultados com técnicas avançadas.</p>
+                  </div>
+                  <div class="level-card">
+                    <h4>🏆 Avançado</h4>
+                    <p>Busca performance máxima? Treinos específicos para superar plateaus.</p>
+                  </div>
+                </div>
+
+                <p><strong>Minha especialidade é justamente adaptar o treino para cada pessoa!</strong> O que importa é
+                  sua vontade de começar e evoluir.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="getting-started" id="faq-3">
+            <div class="faq-question">
+              <h3>Tenho limitações físicas, posso treinar?</h3>
+              <button class="faq-toggle">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p><strong>Sim, claro!</strong> Tenho experiência trabalhando com diversas limitações e condições
+                  especiais.</p>
+
+                <div class="conditions-list">
+                  <div class="condition-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Dores nas costas e articulações</span>
+                  </div>
+                  <div class="condition-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Lesões em recuperação</span>
+                  </div>
+                  <div class="condition-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Diabetes e hipertensão</span>
+                  </div>
+                  <div class="condition-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Problemas posturais</span>
+                  </div>
+                  <div class="condition-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Sedentarismo prolongado</span>
+                  </div>
+                  <div class="condition-item">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Terceira idade</span>
+                  </div>
+                </div>
+
+                <div class="important-note">
+                  <i class="fas fa-exclamation-triangle"></i>
+                  <p><strong>Importante:</strong> Se você tem alguma condição médica específica, é recomendado trazer
+                    liberação médica para atividade física. Isso garante sua segurança e permite criar um treino ainda
+                    mais eficaz!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Training Questions -->
+          <div class="faq-item" data-category="training" id="faq-4">
+            <div class="faq-question">
+              <h3>Como são estruturados os treinos?</h3>
+              <button class="faq-toggle">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p>Cada treino é estruturado de forma científica e personalizada para maximizar seus resultados:</p>
+
+                <div class="training-structure">
+                  <div class="structure-item">
+                    <div class="structure-number">1</div>
+                    <div class="structure-content">
+                      <h4>Aquecimento (5-10min)</h4>
+                      <p>Preparação cardiovascular e articular específica para o treino do dia</p>
+                    </div>
+                  </div>
+
+                  <div class="structure-item">
+                    <div class="structure-number">2</div>
+                    <div class="structure-content">
+                      <h4>Ativação (5-10min)</h4>
+                      <p>Exercícios de mobilidade e ativação dos músculos que serão trabalhados</p>
+                    </div>
+                  </div>
+
+                  <div class="structure-item">
+                    <div class="structure-number">3</div>
+                    <div class="structure-content">
+                      <h4>Treino Principal (30-40min)</h4>
+                      <p>Exercícios focados no seu objetivo: força, hipertrofia, resistência ou emagrecimento</p>
+                    </div>
+                  </div>
+
+                  <div class="structure-item">
+                    <div class="structure-number">4</div>
+                    <div class="structure-content">
+                      <h4>Finalização (5-10min)</h4>
+                      <p>Alongamentos e exercícios de recuperação ativa</p>
+                    </div>
+                  </div>
+                </div>
+
+                <p><strong>Metodologias utilizadas:</strong></p>
+                <ul>
+                  <li>Treinamento funcional</li>
+                  <li>Musculação tradicional</li>
+                  <li>HIIT (Treino intervalado)</li>
+                  <li>Exercícios corretivos</li>
+                  <li>Cardio inteligente</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="training" id="faq-5">
+            <div class="faq-question">
+              <h3>Quantas vezes por semana devo treinar?</h3>
+              <button class="faq-toggle">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p>A frequência ideal varia de acordo com seu objetivo, disponibilidade e nível de condicionamento:</p>
+
+                <div class="frequency-options">
+                  <div class="frequency-card">
+                    <h4>🥉 2x por semana</h4>
+                    <div class="frequency-details">
+                      <p><strong>Ideal para:</strong> Iniciantes, manutenção da saúde, pessoas com pouco tempo</p>
+                      <p><strong>Resultados:</strong> Melhora do condicionamento, fortalecimento básico</p>
+                      <p><strong>Exemplo:</strong> Terça e quinta-feira</p>
+                    </div>
+                  </div>
+
+                  <div class="frequency-card recommended">
+                    <div class="recommended-badge">Mais Popular</div>
+                    <h4>🥈 3x por semana</h4>
+                    <div class="frequency-details">
+                      <p><strong>Ideal para:</strong> Objetivos de emagrecimento e hipertrofia moderada</p>
+                      <p><strong>Resultados:</strong> Mudança significativa na composição corporal</p>
+                      <p><strong>Exemplo:</strong> Segunda, quarta e sexta</p>
+                    </div>
+                  </div>
+
+                  <div class="frequency-card">
+                    <h4>🥇 4-5x por semana</h4>
+                    <div class="frequency-details">
+                      <p><strong>Ideal para:</strong> Resultados acelerados, atletas, competições</p>
+                      <p><strong>Resultados:</strong> Máxima transformação corporal</p>
+                      <p><strong>Exemplo:</strong> Segunda a sexta (com pausas estratégicas)</p>
+                    </div>
+                  </div>
+                </div>
+
+                <p><strong>Lembre-se:</strong> Qualidade sempre supera quantidade. É melhor 2 treinos bem feitos do que
+                  5 mal executados!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-category="training" id="faq-6">
+            <div class="faq-question">
+              <h3>Posso treinar em casa ou só na academia?</h3>
+              <button class="faq-toggle">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p><strong>Você pode treinar onde for mais conveniente!</strong> Adapto os exercícios para qualquer
+                  ambiente:</p>
+
+                <div class="location-options">
+                  <div class="location-card">
+                    <div class="location-icon">🏠</div>
+                    <h4>Em Casa</h4>
+                    <ul>
+                      <li>Exercícios com peso corporal</li>
+                      <li>Equipamentos básicos (halteres, faixas)</li>
+                      <li>Treinos funcionais</li>
+                      <li>Flexibilidade total de horário</li>
+                    </ul>
+                  </div>
+
+                  <div class="location-card">
+                    <div class="location-icon">🏋️</div>
+                    <h4>Na Academia</h4>
+                    <ul>
+                      <li>Acesso a todos os equipamentos</li>
+                      <li>Ambiente motivacional</li>
+                      <li>Variedade máxima de exercícios</li>
+                      <li>Foco total no treino</li>
+                    </ul>
+                  </div>
+
+                  <div class="location-card">
+                    <div class="location-icon">🌳</div>
+                    <h4>Ao Ar Livre</h4>
+                    <ul>
+                      <li>Parques e praças</li>
+                      <li>Exercícios funcionais</li>
+                      <li>Contato com a natureza</li>
+                      <li>Treinos dinâmicos</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <p><strong>Híbrido é possível!</strong> Muitos alunos combinam treinos em casa (dias corridos) com
+                  academia (fins de semana), por exemplo.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Nutrition Questions -->
+          <div class="faq-item" data-category="nutrition" id="faq-7">
+            <div class="faq-question">
+              <h3>Você monta dieta personalizada?</h3>
+              <button class="faq-toggle">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p>Como Personal Trainer, <strong>não posso prescrever dietas</strong> (isso é exclusivo do
+                  nutricionista), mas ofereço:</p>
+
+                <div class="nutrition-services">
+                  <div class="service-item">
+                    <i class="fas fa-check"></i>
+                    <div>
+                      <strong>Orientações Nutricionais Básicas</strong>
+                      <p>Dicas de alimentação saudável alinhadas com seu treino</p>
+                    </div>
+                  </div>
+
+                  <div class="service-item">
+                    <i class="fas fa-check"></i>
+                    <div>
+                      <strong>Educação Alimentar</strong>
+                      <p>Como escolher melhor os alimentos no dia a dia</p>
+                    </div>
+                  </div>
+
+                  <div class="service-item">
+                    <i class="fas fa-check"></i>
+                    <div>
+                      <strong>Timing Nutricional</strong>
+                      <p>Quando comer antes e depois do treino</p>
+                    </div>
+                  </div>
+
+                  <div class="service-item">
+                    <i class="fas fa-check"></i>
+                    <div>
+                      <strong>Suplementação Básica</strong>
+                      <p>Orientações sobre suplementos mais comuns</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="partnership-info">
+                  <i class="fas fa-handshake"></i>
+                  <div>
+                    <h4>Parceria com Nutricionistas</h4>
+                    <p>Para resultados máximos, trabalho em parceria com nutricionistas especializados. Posso indicar
+                      profissionais de confiança que conhecem minha metodologia de treino!</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Results Questions -->
+          <div class="faq-item" data-category="results" id="faq-8">
+            <div class="faq-question">
+              <h3>Em quanto tempo vou ver resultados?</h3>
+              <button class="faq-toggle">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p>Os resultados variam de pessoa para pessoa, mas aqui está uma timeline realista:</p>
+
+                <div class="results-timeline">
+                  <div class="timeline-item">
+                    <div class="timeline-period">1ª Semana</div>
+                    <div class="timeline-content">
+                      <h4>Primeiras Adaptações</h4>
+                      <ul>
+                        <li>Melhora na disposição</li>
+                        <li>Melhor qualidade do sono</li>
+                        <li>Redução do estresse</li>
+                        <li>Familiarização com exercícios</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="timeline-item">
+                    <div class="timeline-period">2-4 Semanas</div>
+                    <div class="timeline-content">
+                      <h4>Mudanças Internas</h4>
+                      <ul>
+                        <li>Aumento da força</li>
+                        <li>Melhora do condicionamento</li>
+                        <li>Redução de medidas</li>
+                        <li>Maior resistência</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="timeline-item">
+                    <div class="timeline-period">6-8 Semanas</div>
+                    <div class="timeline-content">
+                      <h4>Mudanças Visíveis</h4>
+                      <ul>
+                        <li>Definição muscular aparente</li>
+                        <li>Redução significativa de gordura</li>
+                        <li>Melhora postural</li>
+                        <li>Roupas mais folgadas</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="timeline-item">
+                    <div class="timeline-period">12+ Semanas</div>
+                    <div class="timeline-content">
+                      <h4>Transformação Completa</h4>
+                      <ul>
+                        <li>Mudança significativa na composição corporal</li>
+                        <li>Músculos definidos</li>
+                        <li>Novo patamar de condicionamento</li>
+                        <li>Hábitos consolidados</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="results-factors">
+                  <h4>⚡ Fatores que aceleram os resultados:</h4>
+                  <ul>
+                    <li>Consistência nos treinos</li>
+                    <li>Alimentação adequada</li>
+                    <li>Descanso de qualidade</li>
+                    <li>Hidratação adequada</li>
+                    <li>Seguir as orientações à risca</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pricing Questions -->
+          <div class="faq-item" data-category="pricing" id="faq-15">
+            <div class="faq-question">
+              <h3>Qual o valor do treino personalizado?</h3>
+              <button class="faq-toggle">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p>Os valores variam de acordo com a modalidade e frequência escolhida:</p>
+
+                <div class="pricing-table">
+                  <div class="pricing-card">
+                    <h4>Personal Presencial</h4>
+                    <div class="price-options">
+                      <div class="price-item">
+                        <span class="frequency">Aula avulsa</span>
+                        <span class="price">R$ 80</span>
+                      </div>
+                      <div class="price-item">
+                        <span class="frequency">Pacote 8 aulas</span>
+                        <span class="price">R$ 70 <small>/aula</small></span>
+                      </div>
+                      <div class="price-item popular">
+                        <span class="frequency">Mensal (12 aulas)</span>
+                        <span class="price">R$ 60 <small>/aula</small></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pricing-card">
+                    <h4>Personal Online</h4>
+                    <div class="price-options">
+                      <div class="price-item">
+                        <span class="frequency">Mensal básico</span>
+                        <span class="price">R$ 150</span>
+                      </div>
+                      <div class="price-item popular">
+                        <span class="frequency">Mensal premium</span>
+                        <span class="price">R$ 250</span>
+                      </div>
+                      <div class="price-item">
+                        <span class="frequency">Trimestral</span>
+                        <span class="price">R$ 200 <small>/mês</small></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="value-proposition">
+                  <h4>💎 O que está incluído:</h4>
+                  <div class="included-items">
+                    <div class="included-item">
+                      <i class="fas fa-check-circle"></i>
+                      <span>Avaliação física completa</span>
+                    </div>
+                    <div class="included-item">
+                      <i class="fas fa-check-circle"></i>
+                      <span>Treino 100% personalizado</span>
+                    </div>
+                    <div class="included-item">
+                      <i class="fas fa-check-circle"></i>
+                      <span>Acompanhamento via WhatsApp</span>
+                    </div>
+                    <div class="included-item">
+                      <i class="fas fa-check-circle"></i>
+                      <span>Orientações nutricionais básicas</span>
+                    </div>
+                    <div class="included-item">
+                      <i class="fas fa-check-circle"></i>
+                      <span>Ajustes semanais no treino</span>
+                    </div>
+                    <div class="included-item">
+                      <i class="fas fa-check-circle"></i>
+                      <span>Suporte para dúvidas</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="payment-info">
+                  <h4>💳 Formas de pagamento:</h4>
+                  <ul>
+                    <li><strong>PIX:</strong> 5% de desconto</li>
+                    <li><strong>Cartão:</strong> Até 3x sem juros</li>
+                    <li><strong>Dinheiro:</strong> 5% de desconto</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Online Training Questions -->
+          <div class="faq-item" data-category="online" id="faq-20">
+            <div class="faq-question">
+              <h3>Como funciona o treino online?</h3>
+              <button class="faq-toggle">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="faq-answer">
+              <div class="answer-content">
+                <p>O treino online oferece toda a personalização do presencial, mas com a flexibilidade de treinar onde
+                  e quando
+                  quiser:</p>
+
+                <div class="online-process">
+                  <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                      <h4>Avaliação Inicial</h4>
+                      <p>Videochamada para conhecer seus objetivos, histórico e limitações. Análise de fotos e medidas.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                      <h4>Criação do Plano</h4>
+                      <p>Desenvolvimento do seu treino personalizado com vídeos explicativos de cada exercício.</p>
+                    </div>
+                  </div>
+
+                  <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                      <h4>Acompanhamento</h4>
+                      <p>Suporte diário via WhatsApp, correção de execução por vídeo e ajustes semanais.</p>
+                    </div>
+                  </div>
+
+                  <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                      <h4>Evolução</h4>
+                      <p>Reavaliações mensais e progressão constante do seu programa de treino.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="online-tools">
+                  <h4>🛠️ Ferramentas utilizadas:</h4>
+                  <div class="tools-grid">
+                    <div class="tool-item">
+                      <i class="fas fa-mobile-alt"></i>
+                      <span>App exclusivo para treinos</span>
+                    </div>
+                    <div class="tool-item">
+                      <i class="fas fa-video"></i>
+                      <span>Vídeos HD dos exercícios</span>
+                    </div>
+                    <div class="tool-item">
+                      <i class="fab fa-whatsapp"></i>
+                      <span>Grupo VIP no WhatsApp</span>
+                    </div>
+                    <div class="tool-item">
+                      <i class="fas fa-chart-line"></i>
+                      <span>Planilhas de controle</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add more FAQ items as needed -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="faq-contact">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-text">
+          <h2>Não encontrou sua dúvida?</h2>
+          <p>Estou aqui para esclarecer qualquer questão! Entre em contato e terei prazer em ajudar.</p>
+          <div class="contact-methods">
+            <a href="https://wa.me/5517982126171?text=Olá! Tenho uma dúvida sobre os treinos"
+              class="contact-btn whatsapp" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+              <div>
+                <span class="btn-title">WhatsApp</span>
+                <span class="btn-subtitle">Resposta em até 2h</span>
+              </div>
+            </a>
+
+            <a href="tel:17982126171" class="contact-btn phone">
+              <i class="fas fa-phone"></i>
+              <div>
+                <span class="btn-title">Ligação</span>
+                <span class="btn-subtitle">(17) 98212-6171</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-stats">
+          <div class="stat-card">
+            <div class="stat-number">
+              < 2h</div>
+                <div class="stat-label">Tempo médio de resposta</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">24/7</div>
+              <div class="stat-label">WhatsApp disponível</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Dúvidas esclarecidas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-brand">
+            <img src="images/logo.png" alt="Personal Trainer Guilherme Matheus" class="footer-logo">
+            <p>Transformando vidas através do exercício físico em Barretos e região.</p>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Links Rápidos</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
+            <li><a href="dicas.html">Dicas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contato</h4>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fab fa-whatsapp"></i>
+              <span>(17) 98212-6171</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>contato@personalbarretos.com</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Barretos, SP</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Redes Sociais</h4>
+          <div class="social-links">
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://wa.me/5517982126171" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 Personal Trainer Guilherme Matheus. Todos os direitos reservados.</p>
+        <p>Desenvolvido por <a href="#" target="_blank">Sua Empresa</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/faq.js"></script>
+</body>
+
+</html>
