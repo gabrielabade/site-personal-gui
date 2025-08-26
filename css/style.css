@@ -150,14 +150,21 @@ body {
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 3rem;
   font-weight: 800;
   line-height: 1.2;
   margin-bottom: 1.5rem;
 }
 
+.hero-title .highlight {
+  color: var(--primary-blue);
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
 .highlight {
-  background: linear-gradient(45deg, #FFD700, #FFA500);
+  background: linear-gradient(45deg, var(--light-gray), var(--primary-blue));
   -webkit-background-clip: text;
   background-clip: text;
   background-clip: text;
@@ -186,7 +193,7 @@ body {
   display: block;
   font-size: 2.5rem;
   font-weight: 700;
-  color: #FFD700;
+  background: linear-gradient(45deg, var(--light-gray), var(--primary-blue));
 }
 
 .stat-text {
@@ -431,12 +438,14 @@ body {
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
+  color: var(--light-gray);
 }
 
 .cta-content p {
   font-size: 1.2rem;
   margin-bottom: 2rem;
   opacity: 0.9;
+  color: var(--light-gray);
 }
 
 .cta-guarantee {
@@ -841,8 +850,8 @@ body {
 /* Scroll to Top */
 .scroll-top {
   position: fixed;
-  bottom: 100px;
-  right: 30px;
+  bottom: 25px;
+  right: 360px;
   width: 50px;
   height: 50px;
   background: var(--primary-blue);
@@ -1406,7 +1415,6 @@ body {
 }
 
 .contact-info {
-  background: var(--light-gray);
   padding: 3rem;
   border-radius: 15px;
 }
@@ -2280,7 +2288,7 @@ body {
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
-  background: linear-gradient(45deg, #fff, #f0f0f0);
+  background: linear-gradient(45deg, var(--light-gray), var(--primary-blue));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -2790,7 +2798,7 @@ body {
 /* CTA Section */
 .cta-section {
   padding: 6rem 0;
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  background: linear-gradient(135deg, var(--primary-blue), var(--dark-navy));
   color: var(--white);
   text-align: center;
 }
@@ -4099,6 +4107,7 @@ body {
     padding: 1.5rem;
   }
 }
+
 /* FAQ Specific Styles */
 .faq-header {
   background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-navy) 100%);
@@ -5466,8 +5475,9 @@ body {
 }
 
 .btn-secondary {
-  background: #e5e7eb;
-  color: var(--text-dark);
+  background: var(--light-gray);
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
 }
 
 .btn-secondary:hover {
