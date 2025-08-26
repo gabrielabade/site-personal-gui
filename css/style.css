@@ -1817,11 +1817,6 @@ body {
   justify-content: center;
 }
 
-.process-steps .process-step:nth-child(5):nth-last-child(1) {
-  grid-column: 2 / 4;
-  justify-self: center;
-}
-
 .step-number {
   width: 60px;
   height: 60px;
