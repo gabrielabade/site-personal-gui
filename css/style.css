@@ -43,7 +43,7 @@ body {
 
 .navbar {
   padding: 1rem 0;
-    background-color: var(--dark-navy);
+  background-color: var(--dark-navy);
 }
 
 .navbar .container {
@@ -98,6 +98,7 @@ body {
   display: none;
   flex-direction: column;
   cursor: pointer;
+  margin-top: 1rem;
 }
 
 .hamburger span {
@@ -694,6 +695,12 @@ body {
     padding: 2rem;
     height: 100%;
     justify-content: flex-start;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .nav-list a {
+    color: var(--dark-navy);
   }
 
   .hero-content {
