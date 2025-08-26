@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - Personal Trainer Guilherme Matheus | Barretos SP</title>
+  <meta name="description"
+    content="Entre em contato com Personal Trainer Guilherme Matheus em Barretos SP. WhatsApp, telefone, endereço e horários de atendimento.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-brand">
+          <a href="index.html">
+            <img src="images/logo.png" alt="Personal Trainer Guilherme Matheus" class="logo">
+          </a>
+        </div>
+
+        <ul class="nav-menu">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="depoimentos.html">Depoimentos</a></li>
+          <li><a href="galeria.html">Galeria</a></li>
+          <li><a href="dicas.html">Dicas</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://wa.me/5517982126171?text=Olá! Gostaria de agendar uma consulta" class="whatsapp-btn"
+            target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            WhatsApp
+          </a>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Contact Hero -->
+  <section class="contact-hero">
+    <div class="container">
+      <div class="contact-hero-content">
+        <div class="hero-text">
+          <h1>Entre em Contato</h1>
+          <p>Estou aqui para ajudar você a alcançar seus objetivos. Vamos conversar sobre como posso transformar sua
+            jornada fitness!</p>
+
+          <div class="quick-stats">
+            <div class="stat-item">
+              <span class="stat-number">24h</span>
+              <span class="stat-label">Resposta via WhatsApp</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Atendimento personalizado</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">Alunos atendidos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image">
+          <img src="images/guilherme-contato.jpg" alt="Guilherme Matheus Personal Trainer">
+          <div class="status-badge">
+            <div class="status-indicator"></div>
+            <span>Online agora</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Methods -->
+  <section class="contact-methods">
+    <div class="container">
+      <div class="methods-grid">
+        <div class="method-card whatsapp-card">
+          <div class="method-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <h3>WhatsApp</h3>
+          <p>Resposta rápida e atendimento personalizado</p>
+          <div class="method-info">
+            <span class="method-value">(17) 98212-6171</span>
+            <span class="method-status">• Online</span>
+          </div>
+          <a href="https://wa.me/5517982126171?text=Olá! Gostaria de mais informações sobre Personal Training"
+            class="method-btn whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            Iniciar Conversa
+          </a>
+        </div>
+
+        <div class="method-card phone-card">
+          <div class="method-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <h3>Telefone</h3>
+          <p>Ligação direta para agendamentos</p>
+          <div class="method-info">
+            <span class="method-value">(17) 98212-6171</span>
+            <span class="method-hours">Seg-Sex: 6h-22h</span>
+          </div>
+          <a href="tel:+5517982126171" class="method-btn phone-btn">
+            <i class="fas fa-phone"></i>
+            Ligar Agora
+          </a>
+        </div>
+
+        <div class="method-card email-card">
+          <div class="method-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3>E-mail</h3>
+          <p>Para dúvidas e informações detalhadas</p>
+          <div class="method-info">
+            <span class="method-value">guilherme@gmail.com</span>
+            <span class="method-response">Resposta em até 24h</span>
+          </div>
+          <a href="mailto:guilherme@gmail.com" class="method-btn email-btn">
+            <i class="fas fa-envelope"></i>
+            Enviar E-mail
+          </a>
+        </div>
+
+        <div class="method-card location-card">
+          <div class="method-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <h3>Localização</h3>
+          <p>Atendimento presencial em Barretos</p>
+          <div class="method-info">
+            <span class="method-value">Barretos - SP</span>
+            <span class="method-detail">Domiciliar e Academia</span>
+          </div>
+          <button class="method-btn location-btn" onclick="showLocationModal()">
+            <i class="fas fa-map-marker-alt"></i>
+            Ver Localização
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="contact-form-section">
+    <div class="container">
+      <div class="form-wrapper">
+        <div class="form-header">
+          <h2>Envie sua Mensagem</h2>
+          <p>Preencha o formulário abaixo e entrarei em contato o mais breve possível</p>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome Completo *</label>
+              <input type="text" id="nome" name="nome" required>
+              <span class="form-error" id="nome-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail *</label>
+              <input type="email" id="email" name="email" required>
+              <span class="form-error" id="email-error"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="telefone">WhatsApp/Telefone *</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(17) 99999-9999" required>
+              <span class="form-error" id="telefone-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="idade">Idade</label>
+              <input type="number" id="idade" name="idade" min="16" max="80">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="objetivo">Qual seu principal objetivo? *</label>
+            <select id="objetivo" name="objetivo" required>
+              <option value="">Selecione seu objetivo</option>
+              <option value="emagrecimento">Emagrecimento</option>
+              <option value="ganho-massa">Ganho de Massa Muscular</option>
+              <option value="definicao">Definição Corporal</option>
+              <option value="condicionamento">Condicionamento Físico</option>
+              <option value="reabilitacao">Reabilitação</option>
+              <option value="qualidade-vida">Qualidade de Vida</option>
+              <option value="outro">Outro</option>
+            </select>
+            <span class="form-error" id="objetivo-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="modalidade">Modalidade de Interesse *</label>
+            <div class="checkbox-group">
+              <label class="checkbox-item">
+                <input type="checkbox" name="modalidade[]" value="presencial">
+                <span class="checkmark"></span>
+                Personal Presencial
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="modalidade[]" value="online">
+                <span class="checkmark"></span>
+                Personal Online
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="modalidade[]" value="consultoria">
+                <span class="checkmark"></span>
+                Consultoria
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="modalidade[]" value="avaliacao">
+                <span class="checkmark"></span>
+                Avaliação Física
+              </label>
+            </div>
+            <span class="form-error" id="modalidade-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="experiencia">Experiência com Exercícios</label>
+            <select id="experiencia" name="experiencia">
+              <option value="">Selecione sua experiência</option>
+              <option value="iniciante">Iniciante (nunca treinei)</option>
+              <option value="basico">Básico (treino há menos de 1 ano)</option>
+              <option value="intermediario">Intermediário (treino há 1-3 anos)</option>
+              <option value="avancado">Avançado (treino há mais de 3 anos)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="disponibilidade">Disponibilidade de Horário</label>
+            <div class="checkbox-group inline">
+              <label class="checkbox-item">
+                <input type="checkbox" name="disponibilidade[]" value="manha">
+                <span class="checkmark"></span>
+                Manhã (6h-12h)
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="disponibilidade[]" value="tarde">
+                <span class="checkmark"></span>
+                Tarde (12h-18h)
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="disponibilidade[]" value="noite">
+                <span class="checkmark"></span>
+                Noite (18h-22h)
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mensagem">Mensagem *</label>
+            <textarea id="mensagem" name="mensagem" rows="5"
+              placeholder="Conte-me mais sobre seus objetivos, limitações ou dúvidas..." required></textarea>
+            <span class="form-error" id="mensagem-error"></span>
+            <div class="char-counter">
+              <span id="char-count">0</span>/500 caracteres
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-item privacy">
+              <input type="checkbox" name="privacy" required>
+              <span class="checkmark"></span>
+              Aceito os <a href="#" onclick="showPrivacyModal()">termos de uso e política de privacidade</a> *
+            </label>
+            <span class="form-error" id="privacy-error"></span>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="submit-btn" id="submitBtn">
+              <span class="btn-text">
+                <i class="fas fa-paper-plane"></i>
+                Enviar Mensagem
+              </span>
+              <span class="btn-loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                Enviando...
+              </span>
+            </button>
+
+            <div class="form-note">
+              <i class="fas fa-info-circle"></i>
+              <span>Resposta garantida em até 24 horas</span>
+            </div>
+          </div>
+        </form>
+
+        <div class="success-message" id="successMessage">
+          <div class="success-content">
+            <i class="fas fa-check-circle"></i>
+            <h3>Mensagem Enviada com Sucesso!</h3>
+            <p>Obrigado pelo contato! Entrarei em contato via WhatsApp em breve.</p>
+            <button class="btn-new-message" onclick="resetForm()">
+              Enviar Nova Mensagem
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Contact Bar -->
+  <section class="quick-contact-bar">
+    <div class="container">
+      <div class="quick-contact-content">
+        <div class="quick-contact-text">
+          <h3>Prefere Conversar Diretamente?</h3>
+          <p>Clique no botão abaixo para iniciar uma conversa no WhatsApp</p>
+        </div>
+        <div class="quick-contact-actions">
+          <a href="https://wa.me/5517982126171?text=Olá! Vim através do site e gostaria de mais informações sobre Personal Training"
+            class="whatsapp-cta" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span>
+              <strong>Conversar no WhatsApp</strong>
+              <small>Resposta imediata</small>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Modal -->
+  <div class="modal" id="locationModal">
+    <div class="modal-overlay" onclick="closeLocationModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Localização e Atendimento</h3>
+        <button class="modal-close" onclick="closeLocationModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="location-info">
+          <div class="location-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Atendimento Domiciliar</h4>
+              <p>Vou até você em toda região de Barretos-SP</p>
+              <span class="highlight">Taxa de deslocamento: Consulte</span>
+            </div>
+          </div>
+
+          <div class="location-item">
+            <i class="fas fa-dumbbell"></i>
+            <div>
+              <h4>Academias Parceiras</h4>
+              <p>Atendimento em academias conveniadas</p>
+              <span class="highlight">Consulte disponibilidade</span>
+            </div>
+          </div>
+
+          <div class="location-item">
+            <i class="fas fa-home"></i>
+            <div>
+              <h4>Treino ao Ar Livre</h4>
+              <p>Parques e espaços públicos de Barretos</p>
+              <span class="highlight">Modalidade exclusiva</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="coverage-area">
+          <h4>Área de Cobertura</h4>
+          <div class="area-grid">
+            <span class="area-item">Centro</span>
+            <span class="area-item">Jardim América</span>
+            <span class="area-item">Alto da Estação</span>
+            <span class="area-item">Vila Progresso</span>
+            <span class="area-item">Jardim dos Ipês</span>
+            <span class="area-item">Outros bairros</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeLocationModal()">Fechar</button>
+        <a href="https://wa.me/5517982126171?text=Olá! Gostaria de saber sobre atendimento na minha região"
+          class="whatsapp-btn" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+          Consultar Atendimento
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Privacy Modal -->
+  <div class="modal" id="privacyModal">
+    <div class="modal-overlay" onclick="closePrivacyModal()"></div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Termo de Uso e Política de Privacidade</h3>
+        <button class="modal-close" onclick="closePrivacyModal()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="privacy-content">
+          <section>
+            <h4>Coleta de Informações</h4>
+            <p>Coletamos apenas as informações necessárias para fornecer nossos serviços de personal training, incluindo
+              nome, contato e objetivos fitness.</p>
+          </section>
+
+          <section>
+            <h4>Uso das Informações</h4>
+            <p>Suas informações são utilizadas exclusivamente para:</p>
+            <ul>
+              <li>Entrar em contato sobre nossos serviços</li>
+              <li>Personalizar seu programa de treinamento</li>
+              <li>Enviar atualizações relevantes sobre fitness</li>
+            </ul>
+          </section>
+
+          <section>
+            <h4>Proteção de Dados</h4>
+            <p>Seus dados são protegidos e nunca compartilhados com terceiros sem seu consentimento explícito.</p>
+          </section>
+
+          <section>
+            <h4>Seus Direitos</h4>
+            <p>Você pode solicitar a qualquer momento a exclusão ou modificação de seus dados através do WhatsApp (17)
+              98212-6171.</p>
+          </section>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" onclick="acceptPrivacy()">
+          Aceito os Termos
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-brand">
+            <img src="images/logo-white.png" alt="Guilherme Matheus Personal Trainer" class="footer-logo">
+            <p>Transformando vidas através do movimento em Barretos-SP</p>
+          </div>
+          <div class="social-links">
+            <a href="https://instagram.com/guilhermematheus" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/5517982126171" target="_blank">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:guilherme@gmail.com">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
+            <li><a href="depoimentos.html">Depoimentos</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="servicos.html#presencial">Personal Presencial</a></li>
+            <li><a href="servicos.html#online">Personal Online</a></li>
+            <li><a href="servicos.html#consultoria">Consultoria</a></li>
+            <li><a href="servicos.html#avaliacao">Avaliação Física</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contato</h4>
+          <div class="footer-contact">
+            <p>
+              <i class="fab fa-whatsapp"></i>
+              (17) 98212-6171
+            </p>
+            <p>
+              <i class="fas fa-envelope"></i>
+              guilherme@gmail.com
+            </p>
+            <p>
+              <i class="fas fa-map-marker-alt"></i>
+              Barretos - SP
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 Guilherme Matheus Personal Trainer. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/5517982126171?text=Olá! Vim através do site" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Fale comigo no WhatsApp</span>
+  </a>
+
+  <script src="js/main.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+
+</html>
