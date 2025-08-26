@@ -423,7 +423,7 @@ body {
 }
 
 .specialty-features i {
-  color: #28a745;
+  color: var(--primary-blue);
 }
 
 /* CTA Section */
