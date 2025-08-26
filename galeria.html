@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de Transformações - Personal Trainer Guilherme Matheus | Barretos SP</title>
+  <meta name="description"
+    content="Veja a galeria completa de transformações dos clientes do Personal Trainer Guilherme Matheus em Barretos SP. Resultados reais e inspiradores.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-brand">
+          <a href="index.html">
+            <img src="images/logo.png" alt="Personal Trainer Guilherme Matheus" class="logo">
+          </a>
+        </div>
+
+        <ul class="nav-menu">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="servicos.html">Serviços</a></li>
+          <li><a href="produtos.html">Produtos</a></li>
+          <li><a href="depoimentos.html">Depoimentos</a></li>
+          <li><a href="galeria.html" class="active">Galeria</a></li>
+          <li><a href="dicas.html">Dicas</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://wa.me/5517982126171?text=Olá! Quero agendar uma aula experimental!" class="btn btn-primary"
+            target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            Aula Experimental
+          </a>
+          <button class="mobile-menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header gallery-header">
+    <div class="container">
+      <h1>Galeria de Transformações</h1>
+      <p>Mais de 150 vidas transformadas através do fitness</p>
+      <div class="gallery-stats">
+        <div class="stat-item">
+          <span class="stat-number">150+</span>
+          <span class="stat-label">Transformações</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">95%</span>
+          <span class="stat-label">Taxa de Sucesso</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5 Anos</span>
+          <span class="stat-label">de Experiência</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Filters -->
+  <section class="gallery-filters">
+    <div class="container">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="transformation">Antes e Depois</button>
+        <button class="filter-btn" data-filter="training">Treinos</button>
+        <button class="filter-btn" data-filter="events">Eventos</button>
+        <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Gallery -->
+  <section class="main-gallery">
+    <div class="container">
+      <div class="gallery-grid">
+
+        <!-- Transformation Photos -->
+        <div class="gallery-item transformation" data-category="transformation">
+          <div class="gallery-image">
+            <img src="images/transformation-1.jpg" alt="Transformação Cliente 1" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="overlay-content">
+                <h3>Maria Silva</h3>
+                <p>-15kg em 6 meses</p>
+                <button class="view-btn" data-image="images/transformation-1.jpg"
+                  data-title="Maria Silva - Transformação">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="transformation-tag">Antes & Depois</div>
+        </div>
+
+        <div class="gallery-item training" data-category="training">
+          <div class="gallery-image">
+            <img src="images/training-1.jpg" alt="Sessão de Treino Personal" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="overlay-content">
+                <h3>Personal Training</h3>
+                <p>Treino funcional individualizado</p>
+                <button class="view-btn" data-image="images/training-1.jpg" data-title="Sessão Personal Training">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item transformation" data-category="transformation">
+          <div class="gallery-image">
+            <img src="images/transformation-2.jpg" alt="Transformação Cliente 2" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="overlay-content">
+                <h3>João Santos</h3>
+                <p>+8kg massa magra</p>
+                <button class="view-btn" data-image="images/transformation-2.jpg"
+                  data-title="João Santos - Ganho de Massa">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="transformation-tag">Hipertrofia</div>
+        </div>
+
+        <div class="gallery-item training" data-category="training">
+          <div class="gallery-image">
+            <img src="images/training-2.jpg" alt="Treino em Grupo" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="overlay-content">
+                <h3>Treino em Grupo</h3>
+                <p>Energia e motivação coletiva</p>
+                <button class="view-btn" data-image="images/training-2.jpg" data-title="Treino em Grupo">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item events" data-category="events">
+          <div class="gallery-image">
+            <img src="images/event-1.jpg" alt="Workshop de Nutrição" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="overlay-content">
+                <h3>Workshop Nutrição</h3>
+                <p>Educação alimentar para resultados</p>
+                <button class="view-btn" data-image="images/event-1.jpg" data-title="Workshop de Nutrição">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item transformation" data-category="transformation">
+          <div class="gallery-image">
+            <img src="images/transformation-3.jpg" alt="Transformação Cliente 3" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="overlay-content">
+                <h3>Ana Rodrigues</h3>
+                <p>-22kg e nova autoestima</p>
+                <button class="view-btn" data-image="images/transformation-3.jpg"
+                  data-title="Ana Rodrigues - Emagrecimento">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="transformation-tag">Emagrecimento</div>
+        </div>
+
+        <div class="gallery-item lifestyle" data-category="lifestyle">
+          <div class="gallery-image">
+            <img src="images/lifestyle-1.jpg" alt="Vida Fitness Saudável" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="overlay-content">
+                <h3>Lifestyle Fitness</h3>
+                <p>Mudança de hábitos para a vida</p>
+                <button class="view-btn" data-image="images/lifestyle-1.jpg" data-title="Lifestyle Fitness">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item training" data-category="training">
+          <div class="gallery-image">
+            <img src="images/training-3.jpg" alt="Exercício Funcional" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="overlay-content">
+                <h3>Treino Funcional</h3>
+                <p>Movimentos naturais do corpo</p>
+                <button class="view-btn" data-image="images/training-3.jpg" data-title="Treino Funcional">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item events" data-category="events">
+          <div class="gallery-image">
+            <img src="images/event-2.jpg" alt="Desafio 30 Dias" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="overlay-content">
+                <h3>Desafio 30 Dias</h3>
+                <p>Transformação em grupo</p>
+                <button class="view-btn" data-image="images/event-2.jpg" data-title="Desafio 30 Dias">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item transformation" data-category="transformation">
+          <div class="gallery-image">
+            <img src="images/transformation-4.jpg" alt="Transformação Cliente 4" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="overlay-content">
+                <h3>Carlos Oliveira</h3>
+                <p>Definição muscular aos 50+</p>
+                <button class="view-btn" data-image="images/transformation-4.jpg"
+                  data-title="Carlos Oliveira - Definição">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="transformation-tag">50+ Definição</div>
+        </div>
+
+        <div class="gallery-item lifestyle" data-category="lifestyle">
+          <div class="gallery-image">
+            <img src="images/lifestyle-2.jpg" alt="Alimentação Saudável" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="overlay-content">
+                <h3>Nutrição na Prática</h3>
+                <p>Receitas fit e saborosas</p>
+                <button class="view-btn" data-image="images/lifestyle-2.jpg" data-title="Nutrição na Prática">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item training" data-category="training">
+          <div class="gallery-image">
+            <img src="images/training-4.jpg" alt="Treino ao Ar Livre" loading="lazy">
+            <div class="gallery-overlay">
+              <div class="overlay-content">
+                <h3>Outdoor Training</h3>
+                <p>Exercícios ao ar livre</p>
+                <button class="view-btn" data-image="images/training-4.jpg" data-title="Outdoor Training">
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Load More Button -->
+      <div class="load-more-container">
+        <button class="btn btn-outline load-more-btn">
+          <i class="fas fa-plus"></i>
+          Carregar Mais Fotos
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Stories -->
+  <section class="success-stories">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Histórias de Sucesso em Destaque</h2>
+        <p class="section-subtitle">Conheça algumas das transformações mais inspiradoras</p>
+      </div>
+
+      <div class="stories-grid">
+        <div class="story-card">
+          <div class="story-image">
+            <img src="images/story-maria.jpg" alt="História de Sucesso - Maria">
+            <div class="story-badge">-25kg</div>
+          </div>
+          <div class="story-content">
+            <h3>Maria Santos, 34 anos</h3>
+            <p class="story-subtitle">De sedentária a atleta</p>
+            <p class="story-text">
+              "Nunca imaginei que conseguiria perder 25kg e ainda participar de uma corrida de 10km. O Gui não mudou
+              apenas meu corpo, mudou minha vida completamente!"
+            </p>
+            <div class="story-metrics">
+              <div class="metric">
+                <span class="metric-value">-25kg</span>
+                <span class="metric-label">Peso perdido</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">8 meses</span>
+                <span class="metric-label">Duração</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">10km</span>
+                <span class="metric-label">Primeira corrida</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-card">
+          <div class="story-image">
+            <img src="images/story-joao.jpg" alt="História de Sucesso - João">
+            <div class="story-badge">+12kg</div>
+          </div>
+          <div class="story-content">
+            <h3>João Silva, 28 anos</h3>
+            <p class="story-subtitle">Ganho de massa muscular</p>
+            <p class="story-text">
+              "Sempre fui muito magro e tinha complexo com meu corpo. Com o método do Guilherme, ganhei 12kg de massa
+              magra e hoje me sinto confiante!"
+            </p>
+            <div class="story-metrics">
+              <div class="metric">
+                <span class="metric-value">+12kg</span>
+                <span class="metric-label">Massa magra</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">6 meses</span>
+                <span class="metric-label">Duração</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">25%</span>
+                <span class="metric-label">+ Força</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="story-card">
+          <div class="story-image">
+            <img src="images/story-ana.jpg" alt="História de Sucesso - Ana">
+            <div class="story-badge">Fit aos 50</div>
+          </div>
+          <div class="story-content">
+            <h3>Ana Rodrigues, 52 anos</h3>
+            <p class="story-subtitle">Melhor forma aos 50+</p>
+            <p class="story-text">
+              "Aos 52 anos, estou na melhor forma da minha vida! O Gui me provou que idade é só um número quando se tem
+              determinação e orientação certa."
+            </p>
+            <div class="story-metrics">
+              <div class="metric">
+                <span class="metric-value">-18kg</span>
+                <span class="metric-label">Peso perdido</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">52 anos</span>
+                <span class="metric-label">Idade</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">100%</span>
+                <span class="metric-label">Autoestima</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery CTA -->
+  <section class="gallery-cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Sua transformação será a próxima?</h2>
+        <p>Junte-se aos mais de 150 clientes que já transformaram suas vidas</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/5517982126171?text=Olá! Vi a galeria no site e quero começar minha transformação!"
+            class="btn btn-primary" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            Quero me transformar
+          </a>
+          <a href="contato.html" class="btn btn-outline">
+            <i class="fas fa-calendar-alt"></i>
+            Agendar Avaliação
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Modal -->
+  <div class="image-modal" id="imageModal">
+    <div class="modal-overlay">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <img src="" alt="" class="modal-image">
+        <div class="modal-info">
+          <h3 class="modal-title"></h3>
+        </div>
+        <div class="modal-nav">
+          <button class="modal-prev"><i class="fas fa-chevron-left"></i></button>
+          <button class="modal-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <img src="images/logo-white.png" alt="Guilherme Matheus Personal Trainer">
+          </div>
+          <p class="footer-desc">Transformando vidas através do fitness com metodologia personalizada e acompanhamento
+            completo em Barretos SP.</p>
+          <div class="social-links">
+            <a href="https://instagram.com/personalgui_barretos" target="_blank" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/5517982126171" target="_blank" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://facebook.com/personalgui" target="_blank" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://youtube.com/@personalgui" target="_blank" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Navegação</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
+            <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="depoimentos.html">Depoimentos</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="dicas.html">Dicas</a></li>
+            <li><a href="contato.html">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Serviços</h3>
+          <ul class="footer-links">
+            <li><a href="servicos.html#personal-training">Personal Training</a></li>
+            <li><a href="servicos.html#consultoria-online">Consultoria Online</a></li>
+            <li><a href="servicos.html#treino-grupo">Treino em Grupo</a></li>
+            <li><a href="servicos.html#avaliacao-fisica">Avaliação Física</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contato</h3>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>(17) 98212-6171</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>contato@personalguibarretos.com.br</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Barretos - SP</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-clock"></i>
+              <span>Segunda a Sábado: 6h às 22h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-content">
+          <p>&copy; 2024 Guilherme Matheus Personal Trainer. Todos os direitos reservados.</p>
+          <div class="footer-bottom-links">
+            <a href="termos.html">Termos de Uso</a>
+            <a href="privacidade.html">Política de Privacidade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/5517982126171?text=Olá! Vim pelo site e gostaria de mais informações sobre os serviços."
+    class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="js/script.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+
+</html>
