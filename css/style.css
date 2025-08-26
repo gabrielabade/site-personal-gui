@@ -51,6 +51,7 @@ body {
   justify-content: space-between;
   background-color: var(--dark-navy);
 }
+
 .nav-menu {
   display: flex;
   align-items: center;
@@ -679,7 +680,8 @@ body {
   .hamburger {
     display: flex;
   }
-  .nav-brand{
+
+  .nav-brand {
     margin-left: 1.9rem;
   }
 
@@ -1811,6 +1813,13 @@ body {
 .process-step {
   text-align: center;
   position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.process-steps .process-step:nth-child(5):nth-last-child(1) {
+  grid-column: 2 / 4;
+  justify-self: center;
 }
 
 .step-number {
