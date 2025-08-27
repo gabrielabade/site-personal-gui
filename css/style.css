@@ -3283,9 +3283,29 @@ body {
 
 .cta-buttons {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   justify-content: center;
-  flex-wrap: wrap;
+  align-items: center;
+}
+
+.cta-buttons .btn {
+  flex: 1;
+  max-width: 250px;
+  text-align: center;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  height: auto;
+  min-height: 50px;
+  line-height: 1.4;
+}
+
+.cta-buttons .btn i {
+  font-size: 1.1rem;
+  vertical-align: middle;
 }
 
 /* Image Modal */
@@ -5542,6 +5562,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .btn-primary {
@@ -5557,7 +5578,6 @@ body {
 .btn-secondary {
   background: var(--light-gray);
   color: var(--primary-blue);
-  margin-bottom: 1rem;
 }
 
 .btn-secondary:hover {
