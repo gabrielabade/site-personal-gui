@@ -3106,7 +3106,7 @@ body {
 
 /* Gallery Header */
 .gallery-header {
-  background: linear-gradient(135deg, rgba(37, 117, 252, 0.9), rgba(37, 117, 252, 0.7)), url('images/gallery-hero.jpg');
+  background: linear-gradient(135deg, rgba(0, 47, 128, 0.9), rgba(0, 29, 80, 0.7)), url('../images/gallery-hero.png');
   background-size: cover;
   background-position: center;
   padding: 8rem 0 6rem;
@@ -3118,6 +3118,10 @@ body {
   justify-content: center;
   gap: 3rem;
   margin-top: 3rem;
+}
+
+.gallery-stats .stat-label {
+  color: var(--light-gray);
 }
 
 .stat-item {
