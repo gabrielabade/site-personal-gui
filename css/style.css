@@ -3703,7 +3703,10 @@ body {
 .stat-label {
   font-size: 1rem;
   opacity: 0.9;
-  color: var(--primary-blue);
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-gray) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Newsletter Section */
