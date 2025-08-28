@@ -3228,7 +3228,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(37, 117, 252, 0.9);
+  background: rgba(37, 116, 252, 0.733);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3264,8 +3264,8 @@ body {
 }
 
 .view-btn {
-  background: var(--white);
-  color: var(--primary-blue);
+  background: var(--primary-blue);
+  color: var(--light-gray);
   border: none;
   width: 50px;
   height: 50px;
@@ -3276,7 +3276,7 @@ body {
 }
 
 .view-btn:hover {
-  background: var(--primary-blue);
+  background: var(--dark-navy);
   color: var(--white);
   transform: scale(1.1);
 }
