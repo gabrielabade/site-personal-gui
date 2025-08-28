@@ -2500,7 +2500,6 @@ body {
 
 .stat-card {
   text-align: center;
-  color: var(--white);
 }
 
 .stat-number {
@@ -4842,7 +4841,7 @@ body {
 }
 
 .stat-card {
-  background: var(--white);
+  background: rgba(237, 239, 241, 0.568);
   padding: 1.5rem;
   border-radius: 15px;
   text-align: center;
