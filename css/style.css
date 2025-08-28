@@ -793,6 +793,66 @@ body {
   .cta-content h2 {
     font-size: 2rem;
   }
+
+  .footer {
+    text-align: center;
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-section {
+    width: 100%;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  .social-links {
+    justify-content: center;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .contact-info p {
+    text-align: center;
+  }
+
+  .footer-bottom {
+    text-align: center;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center !important;
+  }
+
+  .contact-info p {
+    text-align: center !important;
+    margin: 0.5rem auto;
+    display: block;
+  }
+
+  .contact-info p i {
+    margin-right: 0.5rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -5738,6 +5798,7 @@ body {
   .modal-footer {
     padding: 1.5rem;
   }
+
 
   .area-grid {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
