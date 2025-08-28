@@ -3678,7 +3678,7 @@ body {
 
 /* Tips Page Styles */
 .tips-header {
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  background: linear-gradient(135deg, var(--primary-blue), var(--dark-navy));
 }
 
 .header-stats {
@@ -3703,6 +3703,7 @@ body {
 .stat-label {
   font-size: 1rem;
   opacity: 0.9;
+  color: var(--primary-blue);
 }
 
 /* Newsletter Section */

@@ -20,33 +20,25 @@
     <nav class="navbar">
       <div class="container">
         <div class="nav-brand">
-          <a href="index.html">
-            <img src="images/logo.png" alt="Personal Trainer Guilherme Matheus" class="logo">
-          </a>
+          <img src="images/logo.png" alt="Guilherme Matheus Personal Trainer" class="logo">
         </div>
-
-        <ul class="nav-menu">
-          <li><a href="index.html">Início</a></li>
-          <li><a href="sobre.html">Sobre</a></li>
-          <li><a href="servicos.html">Serviços</a></li>
-          <li><a href="produtos.html">Produtos</a></li>
-          <li><a href="depoimentos.html">Depoimentos</a></li>
-          <li><a href="galeria.html">Galeria</a></li>
-          <li><a href="dicas.html" class="active">Dicas</a></li>
-          <li><a href="contato.html">Contato</a></li>
-        </ul>
-
-        <div class="nav-actions">
-          <a href="https://wa.me/5517982126171?text=Olá! Quero agendar uma aula experimental!" class="btn btn-primary"
-            target="_blank">
-            <i class="fab fa-whatsapp"></i>
-            Aula Experimental
-          </a>
-          <button class="mobile-menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
+        <div class="nav-menu" id="nav-menu">
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Início</a></li>
+            <li><a href="sobre.html" class="nav-link">Sobre</a></li>
+            <li><a href="servicos.html" class="nav-link">Serviços</a></li>
+            <li><a href="produtos.html" class="nav-link">Produtos</a></li>
+            <li><a href="depoimentos.html" class="nav-link">Depoimentos</a></li>
+            <li><a href="galeria.html" class="nav-link">Galeria</a></li>
+            <li><a href="dicas.html" class="nav-link"active>Dicas</a></li>
+            <li><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li><a href="contato.html" class="nav-link">Contato</a></li>
+          </ul>
+        </div>
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
     </nav>
@@ -589,11 +581,65 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <!-- Footer content here (same as other pages) -->
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <img src="images/logo.png" alt="Guilherme Matheus" class="footer-logo">
+          <p>Transformando vidas através do movimento. Treinos que fortalecem corpo e mente, criando hábitos
+            sustentáveis para uma
+            vida mais saudável.</p>
+          <div class="social-links">
+            <a href="https://instagram.com/personalgui_matheus" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/5517982126171" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:guimateus001btos@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
+            <li><a href="produtos.html">Produtos</a></li>
+            <li><a href="depoimentos.html">Depoimentos</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="dicas.html">Dicas</a></li>
+            <li><a href="faq.html">Dúvidas</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Contato</h4>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> Barretos - SP</p>
+            <p><i class="fas fa-phone"></i> (17) 98212-6171</p>
+            <p><i class="fas fa-envelope"></i> guimateus001btos@gmail.com</p>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Horário de Atendimento</h4>
+          <div class="schedule">
+            <p>Segunda a Sexta: 06:00 - 22:00</p>
+            <p>Sábado: 08:00 - 18:00</p>
+            <p>Domingo: 08:00 - 12:00</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Guilherme Matheus Personal Trainer. Todos os direitos reservados.</p>
+        <p>Desenvolvido por <a href="https://gbconnect.digital" target="_blank">gbconnect.digital</a></p>
+      </div>
+    </div>
   </footer>
 
+  <!-- WhatsApp Float Button -->
+  <div class="whatsapp-float">
+    <a href="https://wa.me/5517982126171?text=Olá! Vim do site e gostaria de mais informações!" target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+  <!-- Scripts -->
   <script src="js/main.js"></script>
   <script src="js/tips.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
