@@ -2507,7 +2507,7 @@ body {
   font-size: 3rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
-  background: linear-gradient(45deg, var(--light-gray), var(--dark-navy));
+  background: linear-gradient(45deg, var(--light-gray), var(--primary-blue));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
