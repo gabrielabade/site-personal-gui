@@ -290,8 +290,8 @@ body {
 
 .btn-outline {
   background: transparent;
-  color: var(--primary-blue);
-  border: 2px solid var(--primary-blue);
+  color: var(--light-gray);
+  border: 2px solid var(--light-gray);
 }
 
 .btn-outline:hover {
