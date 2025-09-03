@@ -552,7 +552,7 @@ body {
 }
 
 .footer-logo {
-  height: 40px;
+  height: 100px;
   margin-bottom: 1rem;
 }
 
@@ -708,7 +708,9 @@ body {
   }
 
   .nav-brand {
-    margin-left: 1.9rem;
+    margin: 0;
+    text-align: center;
+    z-index: 3;
   }
 
   .nav-menu {
@@ -3711,7 +3713,8 @@ body {
 /* Newsletter Section */
 .newsletter-section {
   padding: 3rem 0;
-  background: linear-gradient(135deg, #cbd5e1 0%, var(--light-gray) 100%);}
+  background: linear-gradient(135deg, #cbd5e1 0%, var(--light-gray) 100%);
+}
 
 .newsletter-content {
   display: flex;
