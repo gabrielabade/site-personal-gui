@@ -74,53 +74,90 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <div class="hero-overlay"></div>
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1 class="hero-title">
-            <span class="greeting">Fala, meus atletas!</span>
-            Transforme Seu Corpo e Mente com
-            <span class="highlight">Resultados Reais</span>
-          </h1>
-          <p class="hero-subtitle">
-            Personal Trainer especializado em <strong>Hipertrofia</strong> e <strong>Emagrecimento</strong> em
-            Barretos-SP.
-            Atendimento presencial e online com treinos 100% personalizados.
-          </p>
-          <div class="hero-stats">
-            <div class="stat">
-              <span class="stat-number">3+</span>
-              <span class="stat-text">Anos de Experiência</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number">100+</span>
-              <span class="stat-text">Alunos Transformados</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number">24/7</span>
-              <span class="stat-text">Suporte Online</span>
-            </div>
+  <!-- Preload do poster para evitar CLS -->
+  <link rel="preload" as="image" href="images/webp/video-poster.webp">
+
+  <!-- HERO OTIMIZADO -->
+  <section class="hero" id="home" aria-label="Seção inicial - Apresentação do personal">
+    <div class="hero-bg" aria-hidden="true">
+      <!-- Vídeo principal (lazy-load via data-src) -->
+      <video id="heroVideo" class="hero-video" playsinline muted loop preload="metadata"
+        poster="images/webp/video-poster.webp" tabindex="-1" aria-hidden="true" crossorigin="anonymous">
+        <!-- Mantemos data-src para carregamento controlado via JS -->
+        <source data-src="images/originais/video.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo.
+      </video>
+
+      <!-- Botão de play exibido caso autoplay seja bloqueado -->
+      <button id="heroPlayFallback" class="hero-play-fallback" aria-hidden="true" aria-label="Reproduzir vídeo">
+        ▶️ Ver vídeo
+      </button>
+
+      <!-- Fallback estratégico (picture) -->
+      <picture class="hero-fallback" role="img" aria-hidden="true">
+        <!-- Desktop: WebP -->
+        <source media="(min-width:1024px)" type="image/webp"
+          srcset="images/webp/image20-1600.webp 1600w, images/webp/image20-900.webp 900w">
+        <!-- Desktop: JPEG fallback -->
+        <source media="(min-width:1024px)" type="image/jpeg"
+          srcset="images/jpj/image20-1600.jpg 1600w, images/jpj/image20-900.jpg 900w">
+
+        <!-- Mobile: WebP -->
+        <source media="(max-width:1023px)" type="image/webp"
+          srcset="images/webp/image30-900.webp 900w, images/webp/image30-480.webp 480w">
+        <!-- Mobile: JPEG fallback -->
+        <source media="(max-width:1023px)" type="image/jpeg"
+          srcset="images/jpj/image30-900.jpg 900w, images/jpj/image30-480.jpg 480w">
+
+        <!-- img de fallback definitivo (sempre colocar alt descritivo) -->
+        <img src="images/jpj/image20-900.jpg"
+          alt="Guilherme Matheus em ambiente de treino profissional — personal trainer em Barretos" loading="eager"
+          decoding="sync" width="1600" height="900">
+      </picture>
+
+      <div class="hero-overlay" aria-hidden="true"></div>
+    </div>
+
+    <!-- Conteúdo visível do hero (texto e CTAs) -->
+    <div class="hero-content container">
+      <div class="hero-text">
+        <span class="greeting">Fala, meus atletas!</span>
+
+        <h1 class="hero-title">
+          Transforme seu corpo e mente com
+          <span class="highlight">Resultados Reais</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Personal Trainer especializado em Hipertrofia e Emagrecimento em Barretos‑SP.
+          Atendimento presencial e online com treinos 100% personalizados.
+        </p>
+
+        <div class="hero-stats" aria-hidden="false">
+          <div class="stat">
+            <span class="stat-number">3+</span>
+            <span class="stat-text">Anos de Experiência</span>
           </div>
-          <div class="hero-cta">
-            <a href="https://wa.me/5517982126171?text=Olá! Quero conhecer os treinos do Guilherme!"
-              class="btn btn-primary btn-large" target="_blank">
-              <i class="fab fa-whatsapp"></i>
-              Quero Minha Transformação
-            </a>
-            <a href="servicos.html" class="btn btn-secondary btn-large">
-              Conhecer Serviços
-            </a>
+          <div class="stat">
+            <span class="stat-number">100+</span>
+            <span class="stat-text">Alunos Transformados</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">24/7</span>
+            <span class="stat-text">Suporte Online</span>
           </div>
         </div>
-        <div class="hero-image">
-          <img src="images/gui-hero.png" alt="Guilherme Matheus Personal Trainer" class="hero-img">
+
+        <div class="hero-cta" role="group" aria-label="Ações principais">
+          <a class="btn btn-primary btn-large" href="#contato">Quero Minha Transformação</a>
+          <a class="btn btn-secondary btn-large" href="#servicos">Conhecer Serviços</a>
         </div>
       </div>
     </div>
   </section>
+  <!-- /HERO OTIMIZADO -->
+
+
 
   <!-- Benefícios Section -->
   <section class="benefits">
@@ -305,7 +342,9 @@
   </div>
 
   <!-- Scripts -->
+  <script src="js/hero-video.js" defer></script>
   <script src="js/script.js"></script>
+
 </body>
 
 </html>
