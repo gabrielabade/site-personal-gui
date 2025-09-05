@@ -60,7 +60,12 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-image">
-          <img src="images/gui-sobre.png" alt="Guilherme Matheus Personal Trainer" class="about-img">
+          <picture>
+            <source media="(max-width: 480px)" srcset="images/webp/image15-480.webp" type="image/webp">
+            <source media="(max-width: 900px)" srcset="images/webp/image15-900.webp" type="image/webp">
+            <source media="(min-width: 901px)" srcset="images/webp/image15-1600.webp" type="image/webp">
+            <img src="images/jpj/image15-900.jpg" alt="Guilherme Matheus Personal Trainer" class="about-img">
+          </picture>
           <div class="about-stats">
             <div class="stat-item">
               <span class="stat-number">3+</span>
@@ -101,6 +106,7 @@
       </div>
     </div>
   </section>
+  
 
   <!-- Methodology Section -->
   <section class="methodology">
