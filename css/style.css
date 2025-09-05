@@ -3762,11 +3762,18 @@ body {
 
 /* Gallery Header */
 .gallery-header {
-  background: linear-gradient(135deg, rgba(0, 47, 128, 0.9), rgba(0, 29, 80, 0.7)), url('../images/gallery-hero.png');
+  background-image:
+    linear-gradient(135deg, rgba(0, 47, 128, 0.85), rgba(0, 29, 80, 0.65)),
+    url('/images/webp/image19-1600.webp');
   background-size: cover;
-  background-position: center;
-  padding: 8rem 0 6rem;
+  background-position: center center;
+  padding: 6.5rem 0 4.5rem;
   text-align: center;
+  color: #fff;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Gallery Filters */
