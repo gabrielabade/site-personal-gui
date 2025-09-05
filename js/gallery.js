@@ -155,15 +155,17 @@ document.addEventListener('DOMContentLoaded', function () {
   function openModal(index) {
     const item = visibleImages[index];
     const img = item.querySelector('img');
+    const viewBtn = item.querySelector('.view-btn');
+    const originalImage = viewBtn.getAttribute('data-image'); // Pegar da data-image
     const title = item.querySelector('.overlay-content h3').textContent;
     const subtitle = item.querySelector('.overlay-content p').textContent;
 
-    modalImage.src = img.src;
+    modalImage.src = originalImage; // Usar imagem original
     modalImage.alt = img.alt;
-    modalTitle.textContent = `${title} - ${subtitle}`;
+    modalTitle.textContent = `${title}`;
 
     currentImageIndex = index;
-    modal.style.display = 'block';
+    modal.style.display = 'flex'; // Usar flex para centralizar
     document.body.style.overflow = 'hidden';
 
     // Animate modal
@@ -172,7 +174,10 @@ document.addEventListener('DOMContentLoaded', function () {
       modal.style.transition = 'opacity 0.3s ease';
       modal.style.opacity = '1';
     }, 10);
+
+    updateNavigationButtons();
   }
+
 
   function closeModal() {
     modal.style.opacity = '0';
@@ -199,6 +204,8 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateModalImage() {
     const item = visibleImages[currentImageIndex];
     const img = item.querySelector('img');
+    const viewBtn = item.querySelector('.view-btn');
+    const originalImage = viewBtn.getAttribute('data-image');
     const title = item.querySelector('.overlay-content h3').textContent;
     const subtitle = item.querySelector('.overlay-content p').textContent;
 
@@ -206,13 +213,26 @@ document.addEventListener('DOMContentLoaded', function () {
     modalImage.style.opacity = '0';
 
     setTimeout(() => {
-      modalImage.src = img.src;
+      modalImage.src = originalImage; // Usar imagem original
       modalImage.alt = img.alt;
-      modalTitle.textContent = `${title} - ${subtitle}`;
+      modalTitle.textContent = `${title}`;
 
       // Fade in
       modalImage.style.opacity = '1';
     }, 150);
+
+    updateNavigationButtons();
+  }
+  
+  function updateNavigationButtons() {
+    // Sempre mostrar as setas se houver mais de uma imagem
+    if (visibleImages.length > 1) {
+      modalPrev.style.display = 'block';
+      modalNext.style.display = 'block';
+    } else {
+      modalPrev.style.display = 'none';
+      modalNext.style.display = 'none';
+    }
   }
 
   function handleKeyboard(e) {
