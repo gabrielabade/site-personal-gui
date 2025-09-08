@@ -3549,23 +3549,6 @@ body {
   font-weight: 600;
 }
 
-/* Google Reviews */
-.google-reviews {
-  padding: 6rem 0;
-  background: var(--light-gray);
-}
-
-.google-rating-summary {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3rem;
-  margin: 3rem 0;
-  padding: 2rem;
-  background: var(--white);
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-}
-
 .rating-overview {
   text-align: center;
 }
@@ -3597,10 +3580,6 @@ body {
 .rating-overview p {
   color: #666;
   margin-bottom: 1rem;
-}
-
-.google-logo {
-  height: 30px;
 }
 
 .rating-breakdown {
@@ -3639,20 +3618,6 @@ body {
   font-size: 0.9rem;
   color: #666;
   text-align: right;
-}
-
-.google-reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin: 3rem 0;
-}
-
-.google-review-card {
-  background: var(--white);
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: var(--shadow);
 }
 
 .review-header {
@@ -3696,11 +3661,6 @@ body {
   font-size: 0.95rem;
   line-height: 1.5;
   color: #333;
-}
-
-.google-cta {
-  text-align: center;
-  margin-top: 2rem;
 }
 
 /* CTA Section */
@@ -3752,15 +3712,8 @@ body {
     gap: 1rem;
   }
 
-  .google-rating-summary {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    text-align: center;
-  }
-
   .video-grid,
-  .testimonials-grid,
-  .google-reviews-grid {
+  .testimonials-grid {
     grid-template-columns: 1fr;
   }
 
