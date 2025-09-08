@@ -4394,29 +4394,6 @@ body {
   object-fit: cover;
 }
 
-.video-badge {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.8);
-  color: var(--white);
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.video-badge:hover {
-  background: var(--primary-blue);
-  transform: translate(-50%, -50%) scale(1.1);
-}
-
 /* Tips Grid */
 .tips-grid {
   display: grid;
