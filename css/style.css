@@ -2360,42 +2360,6 @@ body {
   color: #555;
 }
 
-/* Video testimonials */
-.video-testimonial {
-  position: relative;
-  border-radius: 15px;
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
-
-.video-testimonial video {
-  width: 100%;
-  height: auto;
-}
-
-.video-play-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: var(--primary-blue);
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.video-play-btn:hover {
-  background: var(--white);
-  transform: translate(-50%, -50%) scale(1.1);
-}
-
 /* Blog/Tips Page */
 .blog-grid {
   display: grid;
@@ -3405,65 +3369,6 @@ body {
   color: var(--primary-blue);
 }
 
-/* Video Testimonials */
-.video-testimonials {
-  padding: 6rem 0;
-  background: var(--light-gray);
-}
-
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.video-testimonial {
-  background: var(--white);
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-}
-
-.video-container {
-  position: relative;
-  width: 100%;
-  height: 200px;
-}
-
-.video-container iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.video-info {
-  padding: 1.5rem;
-}
-
-.video-info h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--dark-navy);
-  margin-bottom: 0.5rem;
-}
-
-.video-info p {
-  color: #666;
-  line-height: 1.5;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
-}
-
-.video-duration {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--primary-blue);
-  font-weight: 500;
-  font-size: 0.9rem;
-}
-
 /* Text Testimonials */
 .text-testimonials {
   padding: 6rem 0;
@@ -3710,11 +3615,6 @@ body {
   .results-summary {
     grid-template-columns: 1fr;
     gap: 1rem;
-  }
-
-  .video-grid,
-  .testimonials-grid {
-    grid-template-columns: 1fr;
   }
 
   .cta-content h2 {
@@ -4729,109 +4629,6 @@ body {
   color: #555;
 }
 
-/* Video Tips */
-.video-tips {
-  padding: 6rem 0;
-  background: var(--light-gray);
-}
-
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.video-item {
-  background: var(--white);
-  border-radius: 15px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
-  box-shadow: var(--shadow);
-}
-
-.video-item:hover {
-  transform: translateY(-5px);
-}
-
-.video-thumbnail {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
-}
-
-.video-thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.play-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(0, 0, 0, 0.8);
-  color: var(--white);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.play-button:hover {
-  background: var(--primary-blue);
-  transform: translate(-50%, -50%) scale(1.1);
-}
-
-.video-duration {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: rgba(0, 0, 0, 0.8);
-  color: var(--white);
-  padding: 0.3rem 0.6rem;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
-
-.video-info {
-  padding: 1.5rem;
-}
-
-.video-info h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--dark-navy);
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
-}
-
-.video-info p {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 1rem;
-}
-
-.video-meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9rem;
-  color: #999;
-}
-
-.video-meta span {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-
 /* Tips CTA */
 .tips-cta {
   padding: 6rem 0;
@@ -4949,11 +4746,6 @@ body {
   }
 
   .quick-tips-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .video-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
