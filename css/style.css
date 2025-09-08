@@ -1010,9 +1010,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  .hamburger {
-    display: flex;
-  }
 
   .nav-brand {
     margin: 0;
@@ -1021,7 +1018,16 @@ body {
   }
 
   .nav-list {
-    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding: 2rem 0;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .nav-list li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   /* Mostrar hamburger */
@@ -1038,12 +1044,8 @@ body {
     height: calc(100vh - var(--site-header-height));
     background: var(--dark-navy);
     transform: translateX(-100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 999;
-    overflow-y: auto;
-    /* Backdrop blur para efeito profissional */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+    z-index: 1000;
   }
 
   /* Menu mobile ativo */
@@ -1098,21 +1100,21 @@ body {
 
   /* Overlay para fechar menu clicando fora */
   .nav-overlay {
-    display: none;
-    position: fixed;
     top: var(--site-header-height);
+    height: calc(100vh - var(--site-header-height));
+    position: fixed;
     left: 0;
     width: 100%;
-    height: calc(100vh - var(--site-header-height));
     background: rgba(0, 0, 0, 0.5);
-    z-index: 998;
+    z-index: 999;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
   }
 
   .nav-overlay.active {
-    display: block;
     opacity: 1;
+    visibility: visible;
   }
 
   /* Focus trap no menu mobile */
@@ -1132,6 +1134,37 @@ body {
     height: 6px;
     background: var(--primary-blue-2);
     border-radius: 50%;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 1rem 2rem;
+    width: 100%;
+    text-align: left;
+    font-size: 1.1rem;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    background: rgba(74, 144, 226, 0.1);
+    color: var(--primary-blue-2);
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  /* Indicador visual melhorado para mobile */
+  .nav-link.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    background: var(--primary-blue);
+    border-radius: 0 4px 4px 0;
   }
 
   .hero-content {

@@ -20,6 +20,22 @@ document.addEventListener('DOMContentLoaded', function () {
   overlay.id = 'nav-overlay';
   document.body.appendChild(overlay);
 
+  function openMenu() {
+    isMenuOpen = true;
+    hamburger.classList.add('active');
+    navMenu.classList.add('active');
+    overlay.classList.add('active');
+    body.classList.add('menu-open');
+  }
+
+  function closeMenu() {
+    isMenuOpen = false;
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+    overlay.classList.remove('active');
+    body.classList.remove('menu-open');
+  }
+
   if (hamburger && navMenu) {
     // Toggle menu
     hamburger.addEventListener('click', function (e) {
@@ -42,87 +58,52 @@ document.addEventListener('DOMContentLoaded', function () {
         closeMenu();
       }
     });
-  }
 
-  function openMenu() {
-    isMenuOpen = true;
-    hamburger.classList.add('active');
-    navMenu.classList.add('active');
-    overlay.classList.add('active');
-    body.style.overflow = 'hidden';
-
-    // Foco no primeiro link
-    const firstLink = navMenu.querySelector('.nav-link');
-    if (firstLink) {
-      setTimeout(() => firstLink.focus(), 100);
-    }
-  }
-
-  function closeMenu() {
-    isMenuOpen = false;
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-    overlay.classList.remove('active');
-    body.style.overflow = '';
-    hamburger.focus();
+    // Fechar menu ao clicar em um link
+    navLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        // Se for um link interno (#), não fechar o menu
+        if (!this.getAttribute('href').startsWith('#')) {
+          closeMenu();
+        }
+      });
+    });
   }
 
   // =====================================================
   // SISTEMA ACTIVE LINK SIMPLIFICADO E FUNCIONAL
   // =====================================================
 
-  // Aplicar active link baseado na página atual na inicialização
-  function setInitialActiveLink() {
-    const currentPath = window.location.pathname;
-    const currentHash = window.location.hash;
+  function getCurrentPage() {
+    let currentPath = window.location.pathname;
+    let currentFile = currentPath.split('/').pop();
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      const href = link.getAttribute('href');
+    // Se não há arquivo ou é index.html, retornar 'home'
+    if (!currentFile || currentFile === '' || currentFile === 'index.html') {
+      return 'home';
+    }
 
-      // Se estamos na home e o link é #home
-      if ((currentPath === '/' || currentPath.endsWith('index.html') || currentPath === '') && href === '#home') {
-        link.classList.add('active');
-      }
-      // Se o link corresponde à página atual
-      else if (href && currentPath.endsWith(href)) {
-        link.classList.add('active');
-      }
-      // Se é um hash e corresponde ao hash atual
-      else if (href && href.startsWith('#') && href === currentHash) {
-        link.classList.add('active');
-      }
-    });
+    // Remover extensão .html
+    return currentFile.replace('.html', '');
   }
 
-  // Aplicar na inicialização
-  setInitialActiveLink();
+  function setActiveLink() {
+    const currentPage = getCurrentPage();
 
-  // Sistema de clique nos links
-  navLinks.forEach(link => {
-    link.addEventListener('click', function () {
-      // Remove active de todos os links
-      navLinks.forEach(l => l.classList.remove('active'));
-      // Adiciona active no link clicado
-      this.classList.add('active');
-
-      // Fechar menu se estiver no mobile
-      if (window.innerWidth <= 768) {
-        closeMenu();
-      }
+    // Remover active de todos os links
+    navLinks.forEach(link => {
+      link.classList.remove('active');
     });
-  });
 
-  // Fechar menu ao redimensionar para desktop
-  let resizeTimeout;
-  window.addEventListener('resize', function () {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(function () {
-      if (window.innerWidth > 768 && isMenuOpen) {
-        closeMenu();
-      }
-    }, 100);
-  });
+    // Encontrar e ativar o link correto
+    const activeLink = document.querySelector(`[data-page="${currentPage}"]`) ||
+      document.querySelector(`[href="${currentPage}.html"]`) ||
+      document.querySelector(`[href="index.html"]`);
+
+    if (activeLink) {
+      activeLink.classList.add('active');
+    }
+  }
 
   // =====================================================
   // HEADER SCROLL EFFECT
@@ -166,7 +147,36 @@ document.addEventListener('DOMContentLoaded', function () {
       behavior: 'smooth'
     });
   }
+  function getCurrentPage() {
+    let currentPath = window.location.pathname;
+    let currentFile = currentPath.split('/').pop();
 
+    // Se não há arquivo ou é index.html, retornar 'home'
+    if (!currentFile || currentFile === '' || currentFile === 'index.html') {
+      return 'home';
+    }
+
+    // Remover extensão .html
+    return currentFile.replace('.html', '');
+  }
+
+  function setActiveLink() {
+    const currentPage = getCurrentPage();
+
+    // Remover active de todos os links
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+    });
+
+    // Encontrar e ativar o link correto
+    const activeLink = document.querySelector(`[data-page="${currentPage}"]`) ||
+      document.querySelector(`[href="${currentPage}.html"]`) ||
+      document.querySelector(`[href="index.html"]`);
+
+    if (activeLink) {
+      activeLink.classList.add('active');
+    }
+  }
   // =====================================================
   // INTERSECTION OBSERVER PARA ANIMAÇÕES
   // =====================================================
