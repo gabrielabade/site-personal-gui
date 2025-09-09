@@ -5105,8 +5105,7 @@ body {
 
 .highlight-item,
 .level-card,
-.frequency-card,
-.location-card {
+.frequency-card {
   background: #f8fafc;
   padding: 1rem;
   border-radius: 10px;
@@ -5475,10 +5474,6 @@ body {
   background: linear-gradient(135deg, #ea4335, #d33b2c);
 }
 
-.location-card .method-icon {
-  background: linear-gradient(135deg, #4285f4, #3367d6);
-}
-
 .method-card h3 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
@@ -5550,18 +5545,6 @@ body {
 
 .email-btn:hover {
   background: #d33b2c;
-  transform: translateY(-2px);
-}
-
-.location-btn {
-  background: transparent;
-  border: 2px solid var(--primary-blue);
-  color: var(--primary-blue);
-}
-
-.location-btn:hover {
-  background: var(--primary-blue);
-  color: var(--white);
   transform: translateY(-2px);
 }
 
