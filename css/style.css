@@ -5308,7 +5308,7 @@ body {
 
 /* Contact Hero */
 .contact-hero {
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  background: linear-gradient(135deg, var(--primary-blue), var(--dark-navy));
   padding: 8rem 0 4rem;
   color: var(--white);
   position: relative;
@@ -5369,8 +5369,8 @@ body {
 
 .status-badge {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 15rem;
+  left: 10px;
   background: rgba(255, 255, 255, 0.95);
   padding: 0.8rem 1.2rem;
   border-radius: 50px;
@@ -5378,7 +5378,7 @@ body {
   align-items: center;
   gap: 0.5rem;
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--dark-navy);
   backdrop-filter: blur(10px);
 }
 
@@ -5467,7 +5467,7 @@ body {
 }
 
 .phone-card .method-icon {
-  background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+  background: linear-gradient(135deg, var(--primary-blue), var(--dark-navy));
 }
 
 .email-card .method-icon {
@@ -5534,7 +5534,7 @@ body {
 }
 
 .phone-btn:hover {
-  background: var(--secondary-blue);
+  background: var(--dark-navy);
   transform: translateY(-2px);
 }
 
