@@ -5831,7 +5831,7 @@ body {
 
 /* Quick Contact Bar */
 .quick-contact-bar {
-  background: linear-gradient(135deg, #25d366, #128c7e);
+  background: linear-gradient(135deg, var(--dark-navy), var(--primary-blue-2));
   padding: 3rem 0;
   color: var(--white);
 }
