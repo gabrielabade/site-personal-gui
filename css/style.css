@@ -922,15 +922,15 @@ body {
 }
 
 .footer-bottom {
-  border-top: 1px solid #333;
+  border-top: 1px solid #555;
   padding-top: 2rem;
   text-align: center;
 }
 
 .footer-bottom a {
-  color: var(--primary-blue);
+  color: var(--primary-blue-2);
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 /* WhatsApp Float Button */
