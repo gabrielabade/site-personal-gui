@@ -1132,109 +1132,90 @@ document.addEventListener('DOMContentLoaded', function () {
   // ---------- Category filtering ----------
   const categoryBtns = document.querySelectorAll('.category-btn');
   const tipCards = document.querySelectorAll('.tip-card, .featured-tip');
+  const tipsContainer = document.querySelector('.tips-grid-section');
 
   categoryBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+      // Remove active class from all buttons
       categoryBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       const category = btn.dataset.category;
 
+      // Filter tips
       tipCards.forEach(card => {
         if (category === 'all' || card.dataset.category === category) {
           card.style.display = 'block';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-          }, 100);
         } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(30px)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 300);
+          card.style.display = 'none';
         }
       });
+
+      // Scroll to the tips section
+      if (tipsContainer) {
+        tipsContainer.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   });
 
-  // ---------- Modal: abrir com conteúdo dinâmico ----------
+  // ---------- Modal functionality ----------
   const readBtns = document.querySelectorAll('[data-tip]');
   const modal = document.getElementById('tipModal');
-  const modalBody = modal.querySelector('.modal-body');
+  const modalBody = modal ? modal.querySelector('.modal-body') : null;
 
-  function openModal(contentHtml, title) {
-    modalBody.innerHTML = `
-    <div class="modal-header">
-      <h3>${title}</h3>
-      <button class="modal-close" aria-label="Fechar modal">&times;</button>
-    </div>
-    <div class="modal-content-body">${contentHtml}</div>
-  `;
+  function openModal(tipKey) {
+    if (!modal || !modalBody) return;
 
-    modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // evitar scroll no body
+    const tip = tipsContent[tipKey];
+    if (tip) {
+      modalBody.innerHTML = `
+        <div class="modal-header">
+          <h3>${tip.title}</h3>
+          <button class="modal-close" aria-label="Fechar modal">&times;</button>
+        </div>
+        <div class="modal-content-body">${tip.content}</div>
+      `;
 
-    // garantir que abre sempre do início
-    modalBody.scrollTop = 0;
-    document.querySelector('#tipModal .modal-content').scrollTop = 0;
-
-    // foco no botão de fechar para acessibilidade
-    const closeBtn = modal.querySelector('.modal-close');
-    closeBtn.focus();
-
-    // evento para fechar no clique do botão
-    closeBtn.addEventListener('click', closeModal);
-  }
-
-  function closeModal() {
-    modal.style.display = 'none';
-    document.body.style.overflow = '';
-    modalBody.innerHTML = '';
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      modalBody.scrollTop = 0;
+    }
   }
 
   readBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      const key = btn.dataset.tip;
-      if (!key) return;
-      const tip = tipsContent[key];
-      if (!tip) {
-        // fallback caso não exista conteúdo
-        openModal('<p>Conteúdo em desenvolvimento. Em breve teremos uma dica completa aqui.</p>', 'Em breve');
-        return;
-      }
-      openModal(tip.content, tip.title);
+      const tipKey = btn.dataset.tip;
+      openModal(tipKey);
     });
   });
 
-  // fechar clicando fora do conteúdo (overlay)
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModal();
+  // ---------- Close modal functionality ----------
+  const closeBtns = document.querySelectorAll('.modal-close');
+  closeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    });
   });
 
-  // fechar com ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.style.display === 'block') {
-      closeModal();
-    }
-  });
-  // ---------- Load more (simples) ----------
-  const loadMoreBtn = document.querySelector('.load-more-tips');
-  if (loadMoreBtn) {
-    loadMoreBtn.addEventListener('click', () => {
-      // sem dicas extras → apenas some com o botão
-      loadMoreBtn.style.display = 'none';
+  // Close modal when clicking outside
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
     });
   }
 
-
-  // ---------- Video play functionality (simples) ----------
-  const videoItems = document.querySelectorAll('.video-item');
-  videoItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const videoTitle = item.querySelector('h3') ? item.querySelector('h3').textContent : 'Vídeo';
-      alert(`Função de vídeo será implementada: ${videoTitle}`);
-    });
+  // Close modal with ESC key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.style.display === 'block') {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
   });
 
   // ---------- Animate tips on scroll ----------
@@ -1259,31 +1240,42 @@ document.addEventListener('DOMContentLoaded', function () {
     tipsObserver.observe(item);
   });
 
-});
-
-// Smooth scrolling for category navigation
-function scrollToTips() {
-  const target = document.querySelector('.tips-grid-section');
-  if (target) {
-    target.scrollIntoView({ behavior: 'smooth' });
-  }
-}
-
-// Search functionality (if needed)
-function searchTips(query) {
-  const tips = document.querySelectorAll('.tip-card');
-  const searchTerm = (query || '').toLowerCase();
-
-  tips.forEach(tip => {
-    const titleEl = tip.querySelector('h3');
-    const pEl = tip.querySelector('p');
-    const title = titleEl ? titleEl.textContent.toLowerCase() : '';
-    const content = pEl ? pEl.textContent.toLowerCase() : '';
-
-    if (title.includes(searchTerm) || content.includes(searchTerm)) {
-      tip.style.display = 'block';
-    } else {
-      tip.style.display = 'none';
-    }
+  // ---------- Video play functionality ----------
+  const videoItems = document.querySelectorAll('.video-item');
+  videoItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const videoTitle = item.querySelector('h3') ? item.querySelector('h3').textContent : 'Vídeo';
+      alert(`Função de vídeo será implementada: ${videoTitle}`);
+    });
   });
-}
+
+  // ---------- Search functionality ----------
+  function searchTips(query) {
+    const tips = document.querySelectorAll('.tip-card');
+    const searchTerm = (query || '').toLowerCase();
+
+    tips.forEach(tip => {
+      const titleEl = tip.querySelector('h3');
+      const pEl = tip.querySelector('p');
+      const title = titleEl ? titleEl.textContent.toLowerCase() : '';
+      const content = pEl ? pEl.textContent.toLowerCase() : '';
+
+      if (title.includes(searchTerm) || content.includes(searchTerm)) {
+        tip.style.display = 'block';
+      } else {
+        tip.style.display = 'none';
+      }
+    });
+  }
+
+  // ---------- Touch feedback ----------
+  const touchableElements = document.querySelectorAll('.category-btn, .read-btn, .btn-primary, .btn-outline');
+  touchableElements.forEach(element => {
+    element.addEventListener('touchstart', function (e) {
+      this.classList.add('touch-feedback');
+      setTimeout(() => {
+        this.classList.remove('touch-feedback');
+      }, 300);
+    });
+  });
+});
