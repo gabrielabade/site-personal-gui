@@ -72,7 +72,7 @@
         </div>
 
         <div class="hero-image">
-          <img src="images/webp/image16-900.webp" alt="Guilherme Matheus Personal Trainer">
+          <img src="images/image1.jpeg" alt="Guilherme Matheus Personal Trainer">
           <div class="status-badge">
             <div class="status-indicator"></div>
             <span>Online agora</span>
@@ -147,7 +147,7 @@
           <h2>Envie sua Mensagem</h2>
           <p>Preencha o formulário abaixo e entrarei em contato o mais breve possível</p>
         </div>
-
+  
         <form class="contact-form" id="contactForm">
           <div class="form-row">
             <div class="form-group">
@@ -161,7 +161,7 @@
               <span class="form-error" id="email-error"></span>
             </div>
           </div>
-
+  
           <div class="form-row">
             <div class="form-group">
               <label for="telefone">WhatsApp/Telefone *</label>
@@ -173,7 +173,7 @@
               <input type="number" id="idade" name="idade" min="16" max="80">
             </div>
           </div>
-
+  
           <div class="form-group">
             <label for="objetivo">Qual seu principal objetivo? *</label>
             <select id="objetivo" name="objetivo" required>
@@ -183,71 +183,29 @@
               <option value="definicao">Definição Corporal</option>
               <option value="condicionamento">Condicionamento Físico</option>
               <option value="reabilitacao">Reabilitação</option>
-              <option value="qualidade-vida">Qualidade de Vida</option>
-              <option value="outro">Outro</option>
             </select>
             <span class="form-error" id="objetivo-error"></span>
           </div>
-
+  
           <div class="form-group">
-            <label for="modalidade">Modalidade de Interesse *</label>
+            <label>Qual sua disponibilidade? *</label>
             <div class="checkbox-group">
-              <label class="checkbox-item">
-                <input type="checkbox" name="modalidade[]" value="presencial">
-                <span class="checkmark"></span>
-                Personal Presencial
-              </label>
-              <label class="checkbox-item">
-                <input type="checkbox" name="modalidade[]" value="online">
-                <span class="checkmark"></span>
-                Personal Online
-              </label>
-              <label class="checkbox-item">
-                <input type="checkbox" name="modalidade[]" value="consultoria">
-                <span class="checkmark"></span>
-                Consultoria
-              </label>
-              <label class="checkbox-item">
-                <input type="checkbox" name="modalidade[]" value="avaliacao">
-                <span class="checkmark"></span>
-                Avaliação Física
-              </label>
+              <div class="checkbox-item">
+                <input type="checkbox" name="disponibilidade[]" value="manha" id="manha">
+                <label for="manha">Manhã (6h-12h)</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="disponibilidade[]" value="tarde" id="tarde">
+                <label for="tarde">Tarde (12h-18h)</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" name="disponibilidade[]" value="noite" id="noite">
+                <label for="noite">Noite (18h-22h)</label>
+              </div>
             </div>
-            <span class="form-error" id="modalidade-error"></span>
+            <span class="form-error" id="disponibilidade-error"></span>
           </div>
-
-          <div class="form-group">
-            <label for="experiencia">Experiência com Exercícios</label>
-            <select id="experiencia" name="experiencia">
-              <option value="">Selecione sua experiência</option>
-              <option value="iniciante">Iniciante (nunca treinei)</option>
-              <option value="basico">Básico (treino há menos de 1 ano)</option>
-              <option value="intermediario">Intermediário (treino há 1-3 anos)</option>
-              <option value="avancado">Avançado (treino há mais de 3 anos)</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="disponibilidade">Disponibilidade de Horário</label>
-            <div class="checkbox-group inline">
-              <label class="checkbox-item">
-                <input type="checkbox" name="disponibilidade[]" value="manha">
-                <span class="checkmark"></span>
-                Manhã (6h-12h)
-              </label>
-              <label class="checkbox-item">
-                <input type="checkbox" name="disponibilidade[]" value="tarde">
-                <span class="checkmark"></span>
-                Tarde (12h-18h)
-              </label>
-              <label class="checkbox-item">
-                <input type="checkbox" name="disponibilidade[]" value="noite">
-                <span class="checkmark"></span>
-                Noite (18h-22h)
-              </label>
-            </div>
-          </div>
-
+  
           <div class="form-group">
             <label for="mensagem">Mensagem *</label>
             <textarea id="mensagem" name="mensagem" rows="5"
@@ -257,16 +215,7 @@
               <span id="char-count">0</span>/500 caracteres
             </div>
           </div>
-
-          <div class="form-group">
-            <label class="checkbox-item privacy">
-              <input type="checkbox" name="privacy" required>
-              <span class="checkmark"></span>
-              Aceito os <a href="#" onclick="showPrivacyModal()">termos de uso e política de privacidade</a> *
-            </label>
-            <span class="form-error" id="privacy-error"></span>
-          </div>
-
+  
           <div class="form-actions">
             <button type="submit" class="submit-btn" id="submitBtn">
               <span class="btn-text">
@@ -278,14 +227,14 @@
                 Enviando...
               </span>
             </button>
-
+  
             <div class="form-note">
               <i class="fas fa-info-circle"></i>
               <span>Resposta garantida em até 24 horas</span>
             </div>
           </div>
         </form>
-
+  
         <div class="success-message" id="successMessage">
           <div class="success-content">
             <i class="fas fa-check-circle"></i>
@@ -299,6 +248,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- Quick Contact Bar -->
   <section class="quick-contact-bar">
