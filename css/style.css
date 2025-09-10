@@ -6350,3 +6350,56 @@ body {
     width: auto;
   }
 }
+
+.page-dicas .cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.page-dicas .cta-buttons .btn {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  padding: 1rem 1.8rem;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Botão primário */
+.page-dicas .cta-buttons .btn-primary {
+  background: var(--primary-blue);
+  color: #fff;
+  border: none;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.page-dicas .cta-buttons .btn-primary:hover {
+  background: linear-gradient(var(--dark-navy) 18%, var(--primary-blue-2) 100%);
+}
+
+/* Botão secundário (outline ajustado) */
+.page-dicas .cta-buttons .btn-outline {
+  background: #fff;
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.page-dicas .cta-buttons .btn-outline:hover {
+  background: var(--primary-blue);
+  color: #fff;
+  border-color: var(--primary-blue);
+}
+
+.page-dicas .cta-buttons .btn.btn-outline {
+  background: #fff;
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0;
+}
