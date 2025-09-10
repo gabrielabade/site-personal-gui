@@ -4348,7 +4348,7 @@ body {
 
 .tip-category {
   background: var(--accent-orange);
-  color: var(--white);
+  color: var(--primary-blue);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.9rem;
