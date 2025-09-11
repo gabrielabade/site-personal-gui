@@ -200,7 +200,7 @@ html {
 .hero {
   position: relative;
   height: 100vh;
-  margin-top: var(--site-header-height);
+  padding-top: var(--site-header-height);
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -208,7 +208,6 @@ html {
   overflow: hidden;
   color: var(--white);
 }
-
 
 /* Background / vídeo wrapper */
 .hero-bg {
@@ -222,21 +221,20 @@ html {
 /* Fallback poster (visível até o vídeo rodar) */
 .hero-fallback {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  z-index: 1;
-  display: block;
-  object-fit: cover;
-  object-position: center;
+  pointer-events: none;
+  background: linear-gradient(0deg, rgba(4, 11, 28, 0.62), rgba(4, 11, 28, 0.46));
 }
 
 .hero-fallback img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left center;
+  object-position: center;
+  display: block;
 }
 
 /* Video element — escala e position por breakpoint para mostrar mais topo em desktop */
@@ -400,6 +398,24 @@ html {
   margin-left: 10px;
 }
 
+/* Botão play de fallback (visível via JS quando autoplay for bloqueado) */
+.hero-play-fallback {
+  display: none;
+  /* JS torna visível quando necessário */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 40;
+  background: rgba(6, 20, 40, 0.86);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.1rem;
+  border-radius: 999px;
+  font-weight: 700;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
 
 .hero-play-fallback:focus {
   outline: 3px solid rgba(90, 163, 255, 0.25);
@@ -417,13 +433,14 @@ html {
   }
 
   .hero-fallback img {
-    object-position: left center;
+    object-position: center 25%;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-fallback img {
-    object-position: left center;
+    object-position: 58% 34%;
+    /* mesma posição do vídeo */
   }
 }
 
@@ -515,28 +532,9 @@ html {
   }
 }
 
-@media (min-width: 768px) {
-  .hero-fallback img {
-    object-position: left center;
-  }
-}
-
-@media (max-width: 767px) {
-  .hero-fallback img {
-    object-position: left center;
-  }
-}
-
 @media (max-width: 768px) {
-
-  .hero {
-    min-height: 60vh;
-    background-size: cover;
-  }
-
   .hero-video {
-    width: 160%;
-    height: 160%;
+    width: 100%;
     object-position: center 25%;
   }
 
@@ -545,16 +543,7 @@ html {
   }
 
   .hero-title {
-    font-size: clamp(2rem, 8vw, 3rem);
-  }
-
-  .hero-content {
-    padding: 1.2rem 0;
-  }
-
-  .hero-stats {
-    flex-direction: column;
-    gap: 1rem;
+    font-size: clamp(24px, 8vw, 36px);
   }
 
 }
@@ -566,16 +555,6 @@ html {
     height: calc(100vh - var(--site-header-height));
   }
 
-  .hero-title {
-    font-size: clamp(28px, 5.2vw, 56px);
-  }
-
-  .btn {
-    min-width: 200px;
-  }
-}
-
-@media (max-width: 1024px) {
   .hero-video {
     object-position: 50% 34%;
     width: 130%;
@@ -583,7 +562,11 @@ html {
   }
 
   .hero-title {
-    font-size: clamp(2.2rem, 8vw, 3.5rem);
+    font-size: clamp(28px, 5.2vw, 56px);
+  }
+
+  .btn {
+    min-width: 200px;
   }
 }
 
@@ -6319,7 +6302,7 @@ html {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: left center;
+  object-position: center;
   z-index: 0;
   display: none;
   /* escondemos por padrão quando vídeo estiver ok */
@@ -6327,20 +6310,18 @@ html {
 
 /* Botão de play acessível (aparece se autoplay falhar) */
 .hero-play-fallback {
-  all: initial;
-  display: none;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 40;
-  background: rgba(6, 20, 40, 0.86);
+  z-index: 3;
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
   color: #fff;
   border: none;
-  padding: 0.8rem 1.1rem;
+  padding: 0.8rem 1rem;
   border-radius: 999px;
   font-weight: 700;
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.45);
   cursor: pointer;
   backdrop-filter: blur(4px);
 }
@@ -6348,17 +6329,21 @@ html {
 /* Em telas pequenas, reduz impacto visual e evita ocupar TODO o viewport vertical */
 @media (max-width: 420px) {
   .hero {
-    min-height: 50vh;
-    background-size: cover;
+    min-height: 62vh;
   }
 
   .hero-video {
-    width: 180%;
-    height: 180%;
+    width: 160%;
+    height: 160%;
   }
 
-  .hero-title {
-    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  .hero-side-img {
+    display: none;
+  }
+
+  /* esconde imagem lateral para priorizar vídeo/texto */
+  .hero-content {
+    padding: 1.2rem 0;
   }
 }
 
