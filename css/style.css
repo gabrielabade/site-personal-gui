@@ -46,6 +46,21 @@ body {
   background: #fff;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--primary-blue-2);
+  z-index: 9999;
+  transition: width 0.3s ease;
+}
+
 /* Simple responsive container */
 .container {
   max-width: 1200px;
@@ -2207,26 +2222,6 @@ body {
 .faq-container {
   max-width: 800px;
   margin: 0 auto;
-}
-
-.faq-item {
-  background: var(--white);
-  border-radius: 10px;
-  margin-bottom: 1rem;
-  box-shadow: var(--shadow);
-  overflow: hidden;
-}
-
-.faq-question {
-  padding: 1.5rem;
-  background: var(--light-gray);
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-weight: 600;
-  color: var(--dark-navy);
-  transition: var(--transition);
 }
 
 .faq-question:hover {
@@ -4887,8 +4882,9 @@ body {
 
 .categories-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .category-card {
@@ -4951,6 +4947,24 @@ body {
 }
 
 /* FAQ Content */
+.faq-section {
+  margin-bottom: 3rem;
+  display: none;
+}
+
+.faq-section.active {
+  display: block;
+}
+
+.faq-section-title {
+  font-size: 2rem;
+  color: var(--dark-navy);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .faq-content {
   padding: 4rem 0;
   background: var(--white);
@@ -5018,6 +5032,7 @@ body {
   background: var(--white);
   border: 1px solid #e2e8f0;
   border-radius: 15px;
+  margin-bottom: 1rem;
   overflow: hidden;
   transition: all 0.3s ease;
 }
@@ -5077,11 +5092,11 @@ body {
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.4s ease;
 }
 
 .faq-item.active .faq-answer {
-  max-height: 1000px;
+  max-height: 2000px;
 }
 
 .answer-content {
@@ -5089,6 +5104,51 @@ body {
   font-size: 1rem;
   line-height: 1.7;
   color: #555;
+}
+
+.answer-content h4 {
+  color: var(--primary-blue);
+  margin: 1rem 0 0.5rem;
+}
+
+.answer-content ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.answer-content li {
+  margin-bottom: 0.5rem;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.comparison-table th {
+  background: var(--light-gray);
+  font-weight: 600;
+  color: var(--dark-navy);
+}
+
+.highlight-box {
+  background: #f0f9ff;
+  border-left: 4px solid var(--primary-blue);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.highlight-box strong {
+  color: var(--primary-blue);
 }
 
 /* Special Answer Elements */
@@ -5198,6 +5258,7 @@ body {
 .contact-btn {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   padding: 1rem 1.5rem;
   border-radius: 15px;
@@ -5207,12 +5268,12 @@ body {
 }
 
 .contact-btn.whatsapp {
-  background: #25d366;
+  background: linear-gradient(135deg, #25d366, #006845);
   color: var(--white);
 }
 
 .contact-btn.phone {
-  background: var(--primary-blue);
+  background: linear-gradient(135deg, var(--primary-blue), var(--dark-navy));
   color: var(--white);
 }
 
@@ -5242,7 +5303,7 @@ body {
 }
 
 .stat-card {
-  background: rgba(237, 239, 241, 0.568);
+  background: var(--white);
   padding: 1.5rem;
   border-radius: 15px;
   text-align: center;
@@ -5251,13 +5312,45 @@ body {
 
 .stat-card .stat-number {
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--primary-blue);
 }
 
 .stat-card .stat-label {
   color: #666;
   font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .contact-methods {
+    flex-direction: column;
+  }
+
+  .header-stats {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .faq-question h3 {
+    font-size: 1rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
 }
 
 /* Responsive */
@@ -5407,7 +5500,7 @@ body {
 /* Contact Methods */
 .contact-methods {
   padding: 6rem 0;
-  background: #f8fafc;
+  background: none;
 }
 
 .methods-grid {

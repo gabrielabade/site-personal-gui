@@ -45,12 +45,15 @@
   </header>
 
 
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator"></div>
+
   <!-- Page Header -->
-  <section class="page-header faq-header">
+  <section class="page-header">
     <div class="container">
       <div class="page-header-content">
         <h1>Perguntas Frequentes</h1>
-        <p>Tire todas as suas dúvidas sobre treino personalizado, consultoria e métodos</p>
+        <p>Dúvidas reais baseadas em pesquisas do Google sobre emagrecimento e ganho de massa muscular</p>
         <div class="header-stats">
           <div class="stat-item">
             <div class="stat-number">24h</div>
@@ -58,25 +61,8 @@
           </div>
           <div class="stat-item">
             <div class="stat-number">100%</div>
-            <div class="stat-label">Transparência</div>
+            <div class="stat-label">Embasamento Científico</div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ Search -->
-  <section class="faq-search">
-    <div class="container">
-      <div class="search-content">
-        <h2>Como posso ajudar você?</h2>
-        <p>Digite sua dúvida ou navegue pelas categorias abaixo</p>
-        <div class="search-box">
-          <input type="text" id="faqSearch" placeholder="Digite sua pergunta aqui..." autocomplete="off">
-          <button type="button" class="search-btn">
-            <i class="fas fa-search"></i>
-          </button>
-          <div class="search-suggestions" id="searchSuggestions"></div>
         </div>
       </div>
     </div>
@@ -85,683 +71,553 @@
   <!-- FAQ Categories -->
   <section class="faq-categories">
     <div class="container">
-      <h2>Categorias de Dúvidas</h2>
+      <h2>Escolha Seu Objetivo</h2>
       <div class="categories-grid">
-        <button class="category-card active" data-category="all">
+        <button class="category-card active" data-category="emagrecimento">
           <div class="category-icon">
-            <i class="fas fa-list"></i>
+            <i class="fas fa-fire"></i>
           </div>
-          <h3>Todas</h3>
-          <span class="question-count">25</span>
+          <h3>Emagrecimento</h3>
         </button>
 
-        <button class="category-card" data-category="getting-started">
-          <div class="category-icon">
-            <i class="fas fa-play"></i>
-          </div>
-          <h3>Primeiros Passos</h3>
-          <span class="question-count">8</span>
-        </button>
-
-        <button class="category-card" data-category="training">
+        <button class="category-card" data-category="massa">
           <div class="category-icon">
             <i class="fas fa-dumbbell"></i>
           </div>
-          <h3>Treino</h3>
-          <span class="question-count">12</span>
+          <h3>Ganho de Massa</h3>
         </button>
 
-        <button class="category-card" data-category="nutrition">
+        <button class="category-card" data-category="adultos">
           <div class="category-icon">
-            <i class="fas fa-apple-alt"></i>
+            <i class="fas fa-user-shield"></i>
           </div>
-          <h3>Nutrição</h3>
-          <span class="question-count">7</span>
+          <h3>Adultos 40+</h3>
         </button>
 
-        <button class="category-card" data-category="pricing">
+        <button class="category-card" data-category="gerais">
           <div class="category-icon">
-            <i class="fas fa-dollar-sign"></i>
+            <i class="fas fa-question-circle"></i>
           </div>
-          <h3>Valores</h3>
-          <span class="question-count">5</span>
-        </button>
-
-        <button class="category-card" data-category="online">
-          <div class="category-icon">
-            <i class="fas fa-video"></i>
-          </div>
-          <h3>Online</h3>
-          <span class="question-count">6</span>
+          <h3>Dúvidas Gerais</h3>
         </button>
       </div>
     </div>
   </section>
 
   <!-- FAQ Content -->
-  <section class="faq-content">
+  <section class="faq-content" id="faq-results">
     <div class="container">
-      <div class="faq-wrapper">
-        <!-- Popular Questions -->
-        <div class="popular-questions">
-          <h2>
-            <i class="fas fa-fire"></i>
-            Perguntas Mais Populares
-          </h2>
-          <div class="popular-list">
-            <a href="#faq-1" class="popular-item">
-              <span>Como funciona a aula experimental?</span>
-              <i class="fas fa-arrow-right"></i>
-            </a>
-            <a href="#faq-15" class="popular-item">
-              <span>Qual o valor do treino personalizado?</span>
-              <i class="fas fa-arrow-right"></i>
-            </a>
-            <a href="#faq-8" class="popular-item">
-              <span>Quanto tempo para ver resultados?</span>
-              <i class="fas fa-arrow-right"></i>
-            </a>
-            <a href="#faq-20" class="popular-item">
-              <span>Como funciona o treino online?</span>
-              <i class="fas fa-arrow-right"></i>
-            </a>
+      <!-- Emagrecimento -->
+      <div class="faq-section active" data-section="emagrecimento">
+        <h2 class="faq-section-title">
+          <i class="fas fa-fire" style="color: var(--accent-orange);"></i>
+          Emagrecimento - Dúvidas mais buscadas no Google
+        </h2>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Por que emagreço na balança, mas não vejo diferença no espelho?</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <div class="highlight-box">
+                <strong>Resposta:</strong> Pode ser perda de água/músculo em vez de gordura.
+              </div>
+              <p><strong>Solução:</strong> Foque em composição corporal (medidas + fotos) e não só no peso.</p>
+              <p><strong>Dica:</strong> Treino de força + déficit calórico moderado (300-500 kcal/dia).</p>
+              <h4>Por que isso acontece:</h4>
+              <ul>
+                <li>A balança não diferencia gordura, músculo e água</li>
+                <li>Perda de água inicial é comum nos primeiros dias</li>
+                <li>Dietas muito restritivas podem causar perda muscular</li>
+                <li>A gordura localizada demora mais para sair</li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <!-- FAQ Items -->
-        <div class="faq-items">
-          <!-- Getting Started -->
-          <div class="faq-item" data-category="getting-started" id="faq-1">
-            <div class="faq-question">
-              <h3>Como funciona a aula experimental gratuita?</h3>
-              <button class="faq-toggle">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-            <div class="faq-answer">
-              <div class="answer-content">
-                <p>A aula experimental é sua oportunidade de conhecer meu método de trabalho sem compromisso!</p>
-                <div class="answer-highlights">
-                  <div class="highlight-item">
-                    <i class="fas fa-clock"></i>
-                    <div>
-                      <strong>Duração:</strong>
-                      <span>45-60 minutos</span>
-                    </div>
-                  </div>
-                  <div class="highlight-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <div>
-                      <strong>Local:</strong>
-                      <span>Academia ou ao ar livre</span>
-                    </div>
-                  </div>
-                  <div class="highlight-item">
-                    <i class="fas fa-clipboard-list"></i>
-                    <div>
-                      <strong>Inclui:</strong>
-                      <span>Avaliação física + treino adaptado</span>
-                    </div>
-                  </div>
-                </div>
-                <p><strong>O que acontece na aula:</strong></p>
-                <ul>
-                  <li>Conversa sobre seus objetivos e histórico</li>
-                  <li>Avaliação física básica (composição corporal, flexibilidade)</li>
-                  <li>Treino personalizado de acordo com seu nível</li>
-                  <li>Orientações sobre técnica e execução</li>
-                  <li>Esclarecimento de dúvidas sobre o programa</li>
-                </ul>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Qual a melhor dieta para emagrecer: low carb, jejum ou contagem de calorias?</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <p><strong>Resposta:</strong> Depende do seu estilo de vida!</p>
+
+              <table class="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Método</th>
+                    <th>Vantagens</th>
+                    <th>Desvantagens</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Low Carb</strong></td>
+                    <td>Reduz fome, rápida perda inicial</td>
+                    <td>Difícil sustentação social</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Jejum</strong></td>
+                    <td>Prático, melhora sensibilidade à insulina</td>
+                    <td>Pode causar ansiedade</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Calorias</strong></td>
+                    <td>Flexível, sustentável</td>
+                    <td>Requer disciplina</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="highlight-box">
+                <strong>Recomendação:</strong> Teste por 2 semanas e veja qual se adapta melhor ao seu estilo de vida.
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="faq-item" data-category="getting-started" id="faq-2">
-            <div class="faq-question">
-              <h3>Preciso ter experiência com exercícios?</h3>
-              <button class="faq-toggle">
-                <i class="fas fa-plus"></i>
-              </button>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Quantos quilos posso perder por mês sem prejudicar a saúde?</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <div class="highlight-box">
+                <strong>Resposta:</strong> 0,5 a 1 kg/semana é o ideal (estudos mostram que perdas mais rápidas levam ao
+                efeito sanfona).
+              </div>
+              <h4>Por que essa faixa é ideal:</h4>
+              <ul>
+                <li>Preserva massa muscular</li>
+                <li>Mantém metabolismo ativo</li>
+                <li>Reduz risco de deficiências nutricionais</li>
+                <li>Maior aderência a longo prazo</li>
+              </ul>
+              <p><strong>Atenção:</strong> Perdas muito rápidas (mais de 1kg/semana) podem indicar perda de músculo e
+                água, não gordura.</p>
             </div>
-            <div class="faq-answer">
-              <div class="answer-content">
-                <p><strong>Absolutamente não!</strong> Trabalho com pessoas de todos os níveis, desde iniciantes
-                  completos até atletas avançados.</p>
+          </div>
+        </div>
 
-                <div class="level-cards">
-                  <div class="level-card">
-                    <h4>🌱 Iniciante</h4>
-                    <p>Nunca treinou ou está parado há muito tempo? Perfeito! Vamos começar do básico com segurança.</p>
-                  </div>
-                  <div class="level-card">
-                    <h4>💪 Intermediário</h4>
-                    <p>Já treina mas quer evoluir? Vamos otimizar seus resultados com técnicas avançadas.</p>
-                  </div>
-                  <div class="level-card">
-                    <h4>🏆 Avançado</h4>
-                    <p>Busca performance máxima? Treinos específicos para superar plateaus.</p>
-                  </div>
-                </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Por que parei de emagrecer mesmo fazendo tudo certo? (Plateau)</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <h4>Causas comuns:</h4>
+              <ul>
+                <li><strong>Adaptação metabólica:</strong> Corpo economiza energia</li>
+                <li><strong>Erros na contagem:</strong> Óleos, molhos, "petiscos"</li>
+                <li><strong>Falta de progressão:</strong> Mesmo treino sempre</li>
+              </ul>
 
-                <p><strong>Minha especialidade é justamente adaptar o treino para cada pessoa!</strong> O que importa é
-                  sua vontade de começar e evoluir.</p>
+              <div class="highlight-box">
+                <strong>Solução:</strong> Reavalie seu gasto calórico (use um app como MyFitnessPal) e mude o estímulo
+                do
+                treino (ex.: troque esteira por HIIT).
+              </div>
+
+              <h4>Estratégias para quebrar o plateau:</h4>
+              <ul>
+                <li>Varie o tipo de treino a cada 4-6 semanas</li>
+                <li>Reavalie suas calorias de manutenção</li>
+                <li>Inclua um dia de refeed (mais carboidratos)</li>
+                <li>Melhore a qualidade do sono</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ganho de Massa -->
+      <div class="faq-section" data-section="massa">
+        <h2 class="faq-section-title">
+          <i class="fas fa-dumbbell" style="color: var(--primary-blue);"></i>
+          Ganho de Massa Muscular - Dúvidas mais frequentes
+        </h2>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Quantas repetições devo fazer para ganhar músculo?</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <h4>Ciência diz:</h4>
+              <ul>
+                <li><strong>6-12 repetições:</strong> Hipertrofia (crescimento muscular)</li>
+                <li><strong>3-5 repetições:</strong> Força máxima</li>
+                <li><strong>15+ repetições:</strong> Resistência muscular</li>
+              </ul>
+
+              <div class="highlight-box">
+                <strong>Dica:</strong> Varie os estímulos a cada 6-8 semanas para evitar estagnação.
+              </div>
+
+              <p><strong>Importante:</strong> A intensidade (peso usado) importa mais que o número exato de repetições.
+                O
+                músculo deve estar próximo da falha muscular.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Preciso tomar suplementos para ganhar músculo?</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <div class="highlight-box">
+                <strong>Resposta direta:</strong> Não! Mas alguns podem ajudar.
+              </div>
+
+              <h4>Suplementos com evidência científica:</h4>
+              <ul>
+                <li><strong>Whey Protein:</strong> Prático para atingir meta de proteína (1.6-2.2g/kg de peso)</li>
+                <li><strong>Creatina:</strong> Comprovada cientificamente (3-5g/dia)</li>
+                <li><strong>Vitamina D:</strong> Se houver deficiência</li>
+              </ul>
+
+              <div class="highlight-box">
+                <strong>Atenção:</strong> Suplementos não substituem alimentação. Foque primeiro em uma dieta
+                equilibrada.
+              </div>
+
+              <p><strong>Prioridades em ordem:</strong></p>
+              <ol>
+                <li>Alimentação adequada</li>
+                <li>Treino consistente</li>
+                <li>Descanso de qualidade</li>
+                <li>Suplementação (se necessário)</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Por que não consigo ganhar músculo mesmo treinando?</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <h4>Erros comuns:</h4>
+              <ul>
+                <li><strong>Falta de progressão:</strong> Mesmo peso sempre</li>
+                <li><strong>Déficit calórico:</strong> Não come suficiente</li>
+                <li><strong>Sono ruim:</strong> Músculos crescem durante o descanso</li>
+                <li><strong>Pouca proteína:</strong> Menos de 1.6g/kg peso corporal</li>
+              </ul>
+
+              <div class="highlight-box">
+                <strong>Solução:</strong> Aumente 5-10% o peso a cada 2 semanas e coma 300-500 kcal acima da manutenção.
+              </div>
+
+              <h4>Checklist para ganho de massa:</h4>
+              <ul>
+                <li>✅ Superávit calórico (300-500 kcal)</li>
+                <li>✅ Proteína adequada (1.6-2.2g/kg)</li>
+                <li>✅ Progressão de carga semanal</li>
+                <li>✅ 7-9 horas de sono</li>
+                <li>✅ Descanso entre treinos (48-72h)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Treino em casa dá resultado para hipertrofia?</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <div class="highlight-box">
+                <strong>Resposta:</strong> Sim! Mas depende do equipamento disponível.
+              </div>
+
+              <h4>Mínimo necessário:</h4>
+              <ul>
+                <li>Barras paralelas ou cadeira resistente</li>
+                <li>Halteres ajustáveis</li>
+                <li>Banda elástica de resistência</li>
+                <li>Barra fixa (ou TRX)</li>
+              </ul>
+
+              <h4>Exemplo de progressão:</h4>
+              <ul>
+                <li><strong>Iniciante:</strong> Flexões tradicionais</li>
+                <li><strong>Intermediário:</strong> Flexões com pés elevados</li>
+                <li><strong>Avançado:</strong> Flexões com peso nas costas</li>
+              </ul>
+
+              <div class="highlight-box">
+                <strong>Dica:</strong> Use séries até a falha muscular para compensar a limitação de equipamentos.
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div class="faq-item" data-category="getting-started" id="faq-3">
-            <div class="faq-question">
-              <h3>Tenho limitações físicas, posso treinar?</h3>
-              <button class="faq-toggle">
-                <i class="fas fa-plus"></i>
-              </button>
+      <!-- Adultos 40+ -->
+      <div class="faq-section" data-section="adultos">
+        <h2 class="faq-section-title">
+          <i class="fas fa-user-shield" style="color: var(--accent-orange);"></i>
+          Envelhecimento Saudável - Dúvidas de 40+ anos
+        </h2>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Como evitar a perda de músculo depois dos 40? (Sarcopenia)</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <h4>Estratégias comprovadas:</h4>
+              <ul>
+                <li><strong>Treino de força 2-3x/semana:</strong> Priorize exercícios compostos (agachamento, supino,
+                  levantamento terra)</li>
+                <li><strong>Proteína em todas as refeições:</strong> 30-40g por refeição</li>
+                <li><strong>Vitamina D:</strong> Essencial para síntese proteica muscular</li>
+              </ul>
+
+              <div class="highlight-box">
+                <strong>Alerta:</strong> Após os 50, a síntese proteica cai 30%. Ajuste a alimentação!
+              </div>
+
+              <h4>Protocolo anti-sarcopenia:</h4>
+              <ul>
+                <li>Treino de força: 2-3x/semana</li>
+                <li>Proteína: 1.8-2.2g/kg peso corporal</li>
+                <li>Vitamina D: Exposição solar + suplementação se necessário</li>
+                <li>Sono: 7-8 horas por noite</li>
+              </ul>
             </div>
-            <div class="faq-answer">
-              <div class="answer-content">
-                <p><strong>Sim, claro!</strong> Tenho experiência trabalhando com diversas limitações e condições
-                  especiais.</p>
+          </div>
+        </div>
 
-                <div class="conditions-list">
-                  <div class="condition-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Dores nas costas e articulações</span>
-                  </div>
-                  <div class="condition-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Lesões em recuperação</span>
-                  </div>
-                  <div class="condition-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Diabetes e hipertensão</span>
-                  </div>
-                  <div class="condition-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Problemas posturais</span>
-                  </div>
-                  <div class="condition-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Sedentarismo prolongado</span>
-                  </div>
-                  <div class="condition-item">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Terceira idade</span>
-                  </div>
-                </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Quais exercícios são seguros para quem tem artrose?</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <h4>❌ Evite:</h4>
+              <ul>
+                <li>Corrida em superfícies duras</li>
+                <li>Saltos e exercícios pliométricos</li>
+                <li>Agachamentos muito profundos</li>
+              </ul>
 
-                <div class="important-note">
-                  <i class="fas fa-exclamation-triangle"></i>
-                  <p><strong>Importante:</strong> Se você tem alguma condição médica específica, é recomendado trazer
-                    liberação médica para atividade física. Isso garante sua segurança e permite criar um treino ainda
-                    mais eficaz!</p>
-                </div>
+              <h4>✅ Recomendado:</h4>
+              <ul>
+                <li><strong>Natação ou hidrogimástica:</strong> Sem impacto nas articulações</li>
+                <li><strong>Pilates:</strong> Fortalece sem sobrecarregar</li>
+                <li><strong>Treino funcional com elásticos:</strong> Resistência controlada</li>
+                <li><strong>Caminhada:</strong> Baixo impacto, pode ser diária</li>
+              </ul>
+
+              <div class="highlight-box">
+                <strong>Dica:</strong> Aqueça 10-15 min antes de qualquer atividade.
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Training Questions -->
-          <div class="faq-item" data-category="training" id="faq-4">
-            <div class="faq-question">
-              <h3>Como são estruturados os treinos?</h3>
-              <button class="faq-toggle">
-                <i class="fas fa-plus"></i>
-              </button>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Como adaptar o treino para a menopausa/andropausa?</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <h4>Para mulheres (menopausa):</h4>
+              <ul>
+                <li><strong>Treino de força:</strong> Previne osteoporose</li>
+                <li><strong>Exercícios de equilíbrio:</strong> Evita quedas</li>
+                <li><strong>Cardio leve:</strong> Caminhada, dança</li>
+                <li><strong>Alongamento:</strong> Mantém flexibilidade</li>
+              </ul>
+
+              <h4>Para homens (andropausa):</h4>
+              <ul>
+                <li><strong>Treino de força pesado:</strong> Estimula testosterona</li>
+                <li><strong>HIIT moderado:</strong> Melhora circulação</li>
+                <li><strong>Alongamento diário:</strong> Evita lesões</li>
+                <li><strong>Exercícios funcionais:</strong> Mantém mobilidade</li>
+              </ul>
             </div>
-            <div class="faq-answer">
-              <div class="answer-content">
-                <p>Cada treino é estruturado de forma científica e personalizada para maximizar seus resultados:</p>
+          </div>
+        </div>
 
-                <div class="training-structure">
-                  <div class="structure-item">
-                    <div class="structure-number">1</div>
-                    <div class="structure-content">
-                      <h4>Aquecimento (5-10min)</h4>
-                      <p>Preparação cardiovascular e articular específica para o treino do dia</p>
-                    </div>
-                  </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Quantas vezes por semana devo treinar após os 50 anos?</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <div class="highlight-box">
+                <strong>Recomendação:</strong> 3-4x/semana (alternando força e mobilidade).
+              </div>
 
-                  <div class="structure-item">
-                    <div class="structure-number">2</div>
-                    <div class="structure-content">
-                      <h4>Ativação (5-10min)</h4>
-                      <p>Exercícios de mobilidade e ativação dos músculos que serão trabalhados</p>
-                    </div>
-                  </div>
+              <h4>Exemplo de rotina semanal:</h4>
+              <ul>
+                <li><strong>Segunda:</strong> Treino de força (pernas + core)</li>
+                <li><strong>Terça:</strong> Descanso ou caminhada leve</li>
+                <li><strong>Quarta:</strong> Cardio leve + alongamento</li>
+                <li><strong>Quinta:</strong> Descanso</li>
+                <li><strong>Sexta:</strong> Treino de força (superior + equilíbrio)</li>
+                <li><strong>Weekend:</strong> Atividade recreativa</li>
+              </ul>
 
-                  <div class="structure-item">
-                    <div class="structure-number">3</div>
-                    <div class="structure-content">
-                      <h4>Treino Principal (30-40min)</h4>
-                      <p>Exercícios focados no seu objetivo: força, hipertrofia, resistência ou emagrecimento</p>
-                    </div>
-                  </div>
-
-                  <div class="structure-item">
-                    <div class="structure-number">4</div>
-                    <div class="structure-content">
-                      <h4>Finalização (5-10min)</h4>
-                      <p>Alongamentos e exercícios de recuperação ativa</p>
-                    </div>
-                  </div>
-                </div>
-
-                <p><strong>Metodologias utilizadas:</strong></p>
-                <ul>
-                  <li>Treinamento funcional</li>
-                  <li>Musculação tradicional</li>
-                  <li>HIIT (Treino intervalado)</li>
-                  <li>Exercícios corretivos</li>
-                  <li>Cardio inteligente</li>
-                </ul>
+              <div class="highlight-box">
+                <strong>Atenção:</strong> Descanso é crucial - músculos demoram mais para se recuperar após os 50.
               </div>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div class="faq-item" data-category="training" id="faq-5">
-            <div class="faq-question">
-              <h3>Quantas vezes por semana devo treinar?</h3>
-              <button class="faq-toggle">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-            <div class="faq-answer">
-              <div class="answer-content">
-                <p>A frequência ideal varia de acordo com seu objetivo, disponibilidade e nível de condicionamento:</p>
+      <!-- Dúvidas Gerais -->
+      <div class="faq-section" data-section="gerais">
+        <h2 class="faq-section-title">
+          <i class="fas fa-question-circle" style="color: var(--primary-blue);"></i>
+          Dúvidas Gerais - Todos os públicos
+        </h2>
 
-                <div class="frequency-options">
-                  <div class="frequency-card">
-                    <h4>🥉 2x por semana</h4>
-                    <div class="frequency-details">
-                      <p><strong>Ideal para:</strong> Iniciantes, manutenção da saúde, pessoas com pouco tempo</p>
-                      <p><strong>Resultados:</strong> Melhora do condicionamento, fortalecimento básico</p>
-                      <p><strong>Exemplo:</strong> Terça e quinta-feira</p>
-                    </div>
-                  </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Qual a melhor hora para treinar: manhã ou noite?</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <div class="highlight-box">
+                <strong>Ciência diz:</strong> Depende do seu ritmo circadiano!
+              </div>
 
-                  <div class="frequency-card recommended">
-                    <div class="recommended-badge">Mais Popular</div>
-                    <h4>🥈 3x por semana</h4>
-                    <div class="frequency-details">
-                      <p><strong>Ideal para:</strong> Objetivos de emagrecimento e hipertrofia moderada</p>
-                      <p><strong>Resultados:</strong> Mudança significativa na composição corporal</p>
-                      <p><strong>Exemplo:</strong> Segunda, quarta e sexta</p>
-                    </div>
-                  </div>
+              <h4>Vantagens do treino matinal:</h4>
+              <ul>
+                <li>Melhor para queimar gordura (jejum)</li>
+                <li>Menos interferências na agenda</li>
+                <li>Melhora disposição para o dia</li>
+                <li>Temperatura corporal mais baixa</li>
+              </ul>
 
-                  <div class="frequency-card">
-                    <h4>🥇 4-5x por semana</h4>
-                    <div class="frequency-details">
-                      <p><strong>Ideal para:</strong> Resultados acelerados, atletas, competições</p>
-                      <p><strong>Resultados:</strong> Máxima transformação corporal</p>
-                      <p><strong>Exemplo:</strong> Segunda a sexta (com pausas estratégicas)</p>
-                    </div>
-                  </div>
-                </div>
+              <h4>Vantagens do treino tarde/noite:</h4>
+              <ul>
+                <li>Melhor performance (força e resistência)</li>
+                <li>Músculos mais aquecidos</li>
+                <li>Maior flexibilidade articular</li>
+                <li>Menos risco de lesões</li>
+              </ul>
 
-                <p><strong>Lembre-se:</strong> Qualidade sempre supera quantidade. É melhor 2 treinos bem feitos do que
-                  5 mal executados!</p>
+              <div class="highlight-box">
+                <strong>Dica:</strong> Escolha o horário que você consegue ser consistente. Consistência supera timing.
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="faq-item" data-category="training" id="faq-6">
-            <div class="faq-question">
-              <h3>Posso treinar em casa ou só na academia?</h3>
-              <button class="faq-toggle">
-                <i class="fas fa-plus"></i>
-              </button>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Posso treinar todos os dias?</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <div class="highlight-box">
+                <strong>Resposta:</strong> Sim, mas com inteligência!
+              </div>
+
+              <h4>Estratégias para treino diário:</h4>
+              <ul>
+                <li><strong>Alternar grupos musculares:</strong> Perna um dia, braço no outro</li>
+                <li><strong>Variar intensidade:</strong> Dias pesados e leves</li>
+                <li><strong>Incluir recuperação ativa:</strong> Yoga, caminhada</li>
+                <li><strong>Respeitar sinais do corpo:</strong> Fadiga excessiva = descanso</li>
+              </ul>
+
+              <h4>⚠️ Risco do overtraining:</h4>
+              <ul>
+                <li>Fadiga constante</li>
+                <li>Aumento de lesões</li>
+                <li>Queda de imunidade</li>
+                <li>Estagnação nos resultados</li>
+              </ul>
             </div>
-            <div class="faq-answer">
-              <div class="answer-content">
-                <p><strong>Você pode treinar onde for mais conveniente!</strong> Adapto os exercícios para qualquer
-                  ambiente:</p>
+          </div>
+        </div>
 
-                <div class="location-options">
-                  <div class="location-card">
-                    <div class="location-icon">🏠</div>
-                    <h4>Em Casa</h4>
-                    <ul>
-                      <li>Exercícios com peso corporal</li>
-                      <li>Equipamentos básicos (halteres, faixas)</li>
-                      <li>Treinos funcionais</li>
-                      <li>Flexibilidade total de horário</li>
-                    </ul>
-                  </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Como saber se estou treinando certo?</h3>
+            <button class="faq-toggle">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+          <div class="faq-answer">
+            <div class="answer-content">
+              <h4>✅ Sinais de que está no caminho certo:</h4>
+              <ul>
+                <li><strong>Progresso visível:</strong> Fotos, medidas, performance</li>
+                <li><strong>Energia durante treino:</strong> Não exaustão extrema</li>
+                <li><strong>Recuperação adequada:</strong> Dor muscular passa em 24-48h</li>
+                <li><strong>Sono melhor:</strong> Mais qualidade no descanso</li>
+                <li><strong>Disposição diária:</strong> Mais energia no cotidiano</li>
+              </ul>
 
-                  <div class="location-card">
-                    <div class="location-icon">🏋️</div>
-                    <h4>Na Academia</h4>
-                    <ul>
-                      <li>Acesso a todos os equipamentos</li>
-                      <li>Ambiente motivacional</li>
-                      <li>Variedade máxima de exercícios</li>
-                      <li>Foco total no treino</li>
-                    </ul>
-                  </div>
+              <h4>❌ Sinais de alerta:</h4>
+              <ul>
+                <li><strong>Dor nas articulações:</strong> Não confundir com dor muscular</li>
+                <li><strong>Fadiga constante:</strong> Até em atividades cotidianas</li>
+                <li><strong>Estagnação:</strong> Sem progresso por +4 semanas</li>
+                <li><strong>Lesões frequentes:</strong> Indicam técnica ou volume inadequado</li>
+              </ul>
 
-                  <div class="location-card">
-                    <div class="location-icon">🌳</div>
-                    <h4>Ao Ar Livre</h4>
-                    <ul>
-                      <li>Parques e praças</li>
-                      <li>Exercícios funcionais</li>
-                      <li>Contato com a natureza</li>
-                      <li>Treinos dinâmicos</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <p><strong>Híbrido é possível!</strong> Muitos alunos combinam treinos em casa (dias corridos) com
-                  academia (fins de semana), por exemplo.</p>
+              <div class="highlight-box">
+                <strong>Dica:</strong> Tire fotos mensais e meça circunferências. Números não mentem!
               </div>
             </div>
           </div>
-
-          <!-- Nutrition Questions -->
-          <div class="faq-item" data-category="nutrition" id="faq-7">
-            <div class="faq-question">
-              <h3>Você monta dieta personalizada?</h3>
-              <button class="faq-toggle">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-            <div class="faq-answer">
-              <div class="answer-content">
-                <p>Como Personal Trainer, <strong>não posso prescrever dietas</strong> (isso é exclusivo do
-                  nutricionista), mas ofereço:</p>
-
-                <div class="nutrition-services">
-                  <div class="service-item">
-                    <i class="fas fa-check"></i>
-                    <div>
-                      <strong>Orientações Nutricionais Básicas</strong>
-                      <p>Dicas de alimentação saudável alinhadas com seu treino</p>
-                    </div>
-                  </div>
-
-                  <div class="service-item">
-                    <i class="fas fa-check"></i>
-                    <div>
-                      <strong>Educação Alimentar</strong>
-                      <p>Como escolher melhor os alimentos no dia a dia</p>
-                    </div>
-                  </div>
-
-                  <div class="service-item">
-                    <i class="fas fa-check"></i>
-                    <div>
-                      <strong>Timing Nutricional</strong>
-                      <p>Quando comer antes e depois do treino</p>
-                    </div>
-                  </div>
-
-                  <div class="service-item">
-                    <i class="fas fa-check"></i>
-                    <div>
-                      <strong>Suplementação Básica</strong>
-                      <p>Orientações sobre suplementos mais comuns</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="partnership-info">
-                  <i class="fas fa-handshake"></i>
-                  <div>
-                    <h4>Parceria com Nutricionistas</h4>
-                    <p>Para resultados máximos, trabalho em parceria com nutricionistas especializados. Posso indicar
-                      profissionais de confiança que conhecem minha metodologia de treino!</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Results Questions -->
-          <div class="faq-item" data-category="results" id="faq-8">
-            <div class="faq-question">
-              <h3>Em quanto tempo vou ver resultados?</h3>
-              <button class="faq-toggle">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-            <div class="faq-answer">
-              <div class="answer-content">
-                <p>Os resultados variam de pessoa para pessoa, mas aqui está uma timeline realista:</p>
-
-                <div class="results-timeline">
-                  <div class="timeline-item">
-                    <div class="timeline-period">1ª Semana</div>
-                    <div class="timeline-content">
-                      <h4>Primeiras Adaptações</h4>
-                      <ul>
-                        <li>Melhora na disposição</li>
-                        <li>Melhor qualidade do sono</li>
-                        <li>Redução do estresse</li>
-                        <li>Familiarização com exercícios</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="timeline-item">
-                    <div class="timeline-period">2-4 Semanas</div>
-                    <div class="timeline-content">
-                      <h4>Mudanças Internas</h4>
-                      <ul>
-                        <li>Aumento da força</li>
-                        <li>Melhora do condicionamento</li>
-                        <li>Redução de medidas</li>
-                        <li>Maior resistência</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="timeline-item">
-                    <div class="timeline-period">6-8 Semanas</div>
-                    <div class="timeline-content">
-                      <h4>Mudanças Visíveis</h4>
-                      <ul>
-                        <li>Definição muscular aparente</li>
-                        <li>Redução significativa de gordura</li>
-                        <li>Melhora postural</li>
-                        <li>Roupas mais folgadas</li>
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div class="timeline-item">
-                    <div class="timeline-period">12+ Semanas</div>
-                    <div class="timeline-content">
-                      <h4>Transformação Completa</h4>
-                      <ul>
-                        <li>Mudança significativa na composição corporal</li>
-                        <li>Músculos definidos</li>
-                        <li>Novo patamar de condicionamento</li>
-                        <li>Hábitos consolidados</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="results-factors">
-                  <h4>⚡ Fatores que aceleram os resultados:</h4>
-                  <ul>
-                    <li>Consistência nos treinos</li>
-                    <li>Alimentação adequada</li>
-                    <li>Descanso de qualidade</li>
-                    <li>Hidratação adequada</li>
-                    <li>Seguir as orientações à risca</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Pricing Questions -->
-          <div class="faq-item" data-category="pricing" id="faq-15">
-            <div class="faq-question">
-              <h3>Qual o valor do treino personalizado?</h3>
-              <button class="faq-toggle">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-            <div class="faq-answer">
-              <div class="answer-content">
-                <p>Os valores variam de acordo com a modalidade e frequência escolhida:</p>
-
-                <div class="pricing-table">
-                  <div class="pricing-card">
-                    <h4>Personal Presencial</h4>
-                    <div class="price-options">
-                      <div class="price-item">
-                        <span class="frequency">Aula avulsa</span>
-                        <span class="price">R$ 80</span>
-                      </div>
-                      <div class="price-item">
-                        <span class="frequency">Pacote 8 aulas</span>
-                        <span class="price">R$ 70 <small>/aula</small></span>
-                      </div>
-                      <div class="price-item popular">
-                        <span class="frequency">Mensal (12 aulas)</span>
-                        <span class="price">R$ 60 <small>/aula</small></span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="pricing-card">
-                    <h4>Personal Online</h4>
-                    <div class="price-options">
-                      <div class="price-item">
-                        <span class="frequency">Mensal básico</span>
-                        <span class="price">R$ 150</span>
-                      </div>
-                      <div class="price-item popular">
-                        <span class="frequency">Mensal premium</span>
-                        <span class="price">R$ 250</span>
-                      </div>
-                      <div class="price-item">
-                        <span class="frequency">Trimestral</span>
-                        <span class="price">R$ 200 <small>/mês</small></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="value-proposition">
-                  <h4>💎 O que está incluído:</h4>
-                  <div class="included-items">
-                    <div class="included-item">
-                      <i class="fas fa-check-circle"></i>
-                      <span>Avaliação física completa</span>
-                    </div>
-                    <div class="included-item">
-                      <i class="fas fa-check-circle"></i>
-                      <span>Treino 100% personalizado</span>
-                    </div>
-                    <div class="included-item">
-                      <i class="fas fa-check-circle"></i>
-                      <span>Acompanhamento via WhatsApp</span>
-                    </div>
-                    <div class="included-item">
-                      <i class="fas fa-check-circle"></i>
-                      <span>Orientações nutricionais básicas</span>
-                    </div>
-                    <div class="included-item">
-                      <i class="fas fa-check-circle"></i>
-                      <span>Ajustes semanais no treino</span>
-                    </div>
-                    <div class="included-item">
-                      <i class="fas fa-check-circle"></i>
-                      <span>Suporte para dúvidas</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="payment-info">
-                  <h4>💳 Formas de pagamento:</h4>
-                  <ul>
-                    <li><strong>PIX:</strong> 5% de desconto</li>
-                    <li><strong>Cartão:</strong> Até 3x sem juros</li>
-                    <li><strong>Dinheiro:</strong> 5% de desconto</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Online Training Questions -->
-          <div class="faq-item" data-category="online" id="faq-20">
-            <div class="faq-question">
-              <h3>Como funciona o treino online?</h3>
-              <button class="faq-toggle">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-            <div class="faq-answer">
-              <div class="answer-content">
-                <p>O treino online oferece toda a personalização do presencial, mas com a flexibilidade de treinar onde
-                  e quando
-                  quiser:</p>
-
-                <div class="online-process">
-                  <div class="process-step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                      <h4>Avaliação Inicial</h4>
-                      <p>Videochamada para conhecer seus objetivos, histórico e limitações. Análise de fotos e medidas.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="process-step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                      <h4>Criação do Plano</h4>
-                      <p>Desenvolvimento do seu treino personalizado com vídeos explicativos de cada exercício.</p>
-                    </div>
-                  </div>
-
-                  <div class="process-step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                      <h4>Acompanhamento</h4>
-                      <p>Suporte diário via WhatsApp, correção de execução por vídeo e ajustes semanais.</p>
-                    </div>
-                  </div>
-
-                  <div class="process-step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                      <h4>Evolução</h4>
-                      <p>Reavaliações mensais e progressão constante do seu programa de treino.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="online-tools">
-                  <h4>🛠️ Ferramentas utilizadas:</h4>
-                  <div class="tools-grid">
-                    <div class="tool-item">
-                      <i class="fas fa-mobile-alt"></i>
-                      <span>App exclusivo para treinos</span>
-                    </div>
-                    <div class="tool-item">
-                      <i class="fas fa-video"></i>
-                      <span>Vídeos HD dos exercícios</span>
-                    </div>
-                    <div class="tool-item">
-                      <i class="fab fa-whatsapp"></i>
-                      <span>Grupo VIP no WhatsApp</span>
-                    </div>
-                    <div class="tool-item">
-                      <i class="fas fa-chart-line"></i>
-                      <span>Planilhas de controle</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Add more FAQ items as needed -->
         </div>
       </div>
     </div>
@@ -796,24 +652,22 @@
 
         <div class="contact-stats">
           <div class="stat-card">
-            <div class="stat-number">
-              < 2h</div>
-                <div class="stat-label">Tempo médio de resposta</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">24/7</div>
-              <div class="stat-label">WhatsApp disponível</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-number">100%</div>
-              <div class="stat-label">Dúvidas esclarecidas</div>
-            </div>
+            <div class="stat-number">&lt; 2h</div>
+            <div class="stat-label">Tempo médio de resposta</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">WhatsApp disponível</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Dúvidas esclarecidas</div>
           </div>
         </div>
       </div>
+    </div>
   </section>
 
-  <!-- Footer -->
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
