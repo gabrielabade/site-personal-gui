@@ -1,611 +1,441 @@
 (function () {
   'use strict';
 
-  // Configurações centralizadas
+  // Config
   const CONFIG = {
-    video: {
-      selector: '#heroVideo',
-      preload: 'none',
-      autoplayDelay: 500,
-      loadTimeout: 10000
-    },
-    fallback: {
-      selector: '#heroFallback',
-      hideDelay: 500
-    },
-    playButton: {
-      selector: '#heroPlayButton',
-      className: 'hero-play-button'
-    },
-    loading: {
-      selector: '#videoLoading'
-    },
-    intersection: {
-      threshold: 0.1,
-      rootMargin: '200px'
-    }
+    videoSelector: '#heroVideo',
+    fallbackSelector: '#heroFallback',
+    playButtonSelector: '#heroPlayButton',
+    loadingSelector: '#videoLoading',
+    intersection: { threshold: 0.15, rootMargin: '250px' },
+    loadTimeout: 10000,
+    autoplayDelay: 400
   };
 
-  // Cache de elementos DOM
-  const elements = new Map();
-
-  // Estados globais
+  // Estado global
   const state = {
-    videoLoaded: false,
-    videoPlaying: false,
-    intersectionTriggered: false,
+    loaded: false,
+    playing: false,
+    intersectionSeen: false,
     userInteracted: false,
+    reducedMotion: false,
+    saveData: false,
     isMobile: false,
-    reducedMotion: false
+    inFlightLoad: false
   };
 
-  // Utilitários
-  const utils = {
-    // Cache de elementos DOM
-    getElement(selector) {
-      if (!elements.has(selector)) {
-        elements.set(selector, document.querySelector(selector));
-      }
-      return elements.get(selector);
-    },
+  // Helpers
+  const q = sel => document.querySelector(sel);
+  const log = (msg, type = 'info') => {
+    const tag = '[HeroVideo]';
+    if (type === 'error') console.error(tag, msg);
+    else if (type === 'warn') console.warn(tag, msg);
+    else console.log(tag, msg);
+  };
 
-    // Detectar dispositivo móvel
-    checkMobile() {
-      state.isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    },
-
-    // Verificar preferências de movimento reduzido
-    checkReducedMotion() {
-      state.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    },
-
-    // Animar elemento com classe
-    animateElement(element, className, show = true) {
-      if (!element) return;
-
-      if (show) {
-        element.style.display = '';
-        element.classList.add(className);
-        element.classList.remove('hidden');
-      } else {
-        element.classList.remove(className);
-        element.classList.add('hidden');
-        setTimeout(() => {
-          if (element.classList.contains('hidden')) {
-            element.style.display = 'none';
-          }
-        }, CONFIG.fallback.hideDelay);
-      }
-    },
-
-    // Criar promise para eventos de carregamento
-    createLoadPromise(element, eventType, timeout = CONFIG.video.loadTimeout) {
-      return new Promise((resolve, reject) => {
-        const timer = setTimeout(() => {
-          reject(new Error(`${eventType} timeout após ${timeout}ms`));
-        }, timeout);
-
-        const successHandler = () => {
-          clearTimeout(timer);
-          element.removeEventListener(eventType, successHandler);
-          element.removeEventListener('error', errorHandler);
-          resolve();
-        };
-
-        const errorHandler = (error) => {
-          clearTimeout(timer);
-          element.removeEventListener(eventType, successHandler);
-          element.removeEventListener('error', errorHandler);
-          reject(error);
-        };
-
-        element.addEventListener(eventType, successHandler, { once: true });
-        element.addEventListener('error', errorHandler, { once: true });
-      });
-    },
-
-    // Debounce para otimizar eventos
-    debounce(func, wait) {
-      let timeout;
-      return function executedFunction(...args) {
-        const later = () => {
-          clearTimeout(timeout);
-          func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-      };
-    },
-
-    // Logger com timestamp
-    log(message, type = 'info') {
-      const timestamp = new Date().toLocaleTimeString();
-      const prefix = `[HeroVideo ${timestamp}]`;
-
-      switch (type) {
-        case 'error':
-          console.error(`${prefix} ❌`, message);
-          break;
-        case 'warn':
-          console.warn(`${prefix} ⚠️`, message);
-          break;
-        case 'success':
-          console.log(`${prefix} ✅`, message);
-          break;
-        default:
-          console.log(`${prefix} ℹ️`, message);
-      }
+  function detectEnvironment() {
+    try {
+      state.reducedMotion = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    } catch (e) {
+      state.reducedMotion = false;
     }
-  };
 
-  // Gerenciador de vídeo
-  const VideoManager = {
+    try {
+      const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection || null;
+      if (conn) {
+        state.saveData = !!(conn.saveData || (conn.effectiveType && /2g|slow-2g/i.test(conn.effectiveType)));
+      } else {
+        state.saveData = false;
+      }
+    } catch (e) {
+      state.saveData = false;
+    }
+
+    try {
+      state.isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    } catch (e) {
+      state.isMobile = false;
+    }
+  }
+
+  // Converte <source data-src="..."> em src e retorna Promise que resolve quando video pode play
+  function loadVideoSources(video) {
+    return new Promise((resolve, reject) => {
+      if (!video) return reject(new Error('video element not found'));
+      if (state.inFlightLoad) return reject(new Error('load already in progress'));
+
+      const sources = Array.from(video.querySelectorAll('source[data-src]'));
+      if (sources.length === 0) {
+        return resolve(); // nada a fazer
+      }
+
+      state.inFlightLoad = true;
+
+      sources.forEach(s => {
+        const data = s.getAttribute('data-src');
+        if (data) {
+          s.src = data;
+          s.removeAttribute('data-src');
+        }
+      });
+
+      // força o browser a recarregar as fontes
+      try { video.load(); } catch (e) { /* ignore */ }
+
+      let settled = false;
+      const t = setTimeout(() => {
+        if (!settled) {
+          settled = true;
+          state.inFlightLoad = false;
+          reject(new Error('load timeout'));
+        }
+      }, CONFIG.loadTimeout);
+
+      function cleanupListeners() {
+        video.removeEventListener('canplay', onCanPlay);
+        video.removeEventListener('canplaythrough', onCanPlayThrough);
+        video.removeEventListener('error', onError);
+        clearTimeout(t);
+      }
+
+      function onCanPlay() {
+        if (settled) return;
+        settled = true;
+        state.inFlightLoad = false;
+        cleanupListeners();
+        resolve();
+      }
+
+      function onCanPlayThrough() {
+        // canplaythrough é mais garantido, preferível quando disponível
+        if (settled) return;
+        settled = true;
+        state.inFlightLoad = false;
+        cleanupListeners();
+        resolve();
+      }
+
+      function onError(e) {
+        if (settled) return;
+        settled = true;
+        state.inFlightLoad = false;
+        cleanupListeners();
+        reject(new Error('video error while loading'));
+      }
+
+      video.addEventListener('canplay', onCanPlay);
+      video.addEventListener('canplaythrough', onCanPlayThrough);
+      video.addEventListener('error', onError);
+    });
+  }
+
+  // Utils de DOM
+  function hideElement(el) { if (!el) return; el.style.display = 'none'; el.setAttribute && el.setAttribute('aria-hidden', 'true'); }
+  function showElement(el, display = '') { if (!el) return; el.style.display = display; el.setAttribute && el.setAttribute('aria-hidden', 'false'); }
+
+  // Manager
+  const Manager = {
     video: null,
+    fallback: null,
+    playBtn: null,
+    loading: null,
+    observer: null,
+    listeners: [],
+
+    createPlayButton() {
+      let btn = q(CONFIG.playButtonSelector);
+      if (btn) return btn;
+
+      // cria um botão acessível se não existir
+      btn = document.createElement('button');
+      btn.id = CONFIG.playButtonSelector.replace('#', '') || 'heroPlayButton';
+      btn.className = 'hero-play-button';
+      btn.type = 'button';
+      btn.setAttribute('aria-pressed', 'false');
+      btn.setAttribute('aria-label', 'Reproduzir vídeo');
+      // conteúdo visual mínimo; em produção use SVG/icone
+      btn.textContent = '▶';
+      // tenta inserir antes do vídeo se possível
+      try {
+        if (this.video && this.video.parentNode) {
+          this.video.parentNode.insertBefore(btn, this.video);
+        } else {
+          document.body.appendChild(btn);
+        }
+      } catch (e) {
+        document.body.appendChild(btn);
+      }
+      return btn;
+    },
 
     init() {
-      this.video = utils.getElement(CONFIG.video.selector);
+      // guardar referências
+      this.video = q(CONFIG.videoSelector);
+      this.fallback = q(CONFIG.fallbackSelector);
+      this.loading = q(CONFIG.loadingSelector);
+      this.playBtn = q(CONFIG.playButtonSelector) || this.createPlayButton();
+
       if (!this.video) {
-        utils.log('Elemento de vídeo não encontrado', 'error');
+        log('Video não encontrado: abortando inicialização', 'warn');
         return false;
       }
 
-      this.setupVideo();
-      this.attachEventListeners();
-      utils.log('VideoManager inicializado');
+      // Acessibilidade: associe botão ao vídeo
+      try {
+        if (this.playBtn && this.video.id) {
+          this.playBtn.setAttribute('aria-controls', this.video.id);
+        }
+      } catch (e) { /* ignore */ }
+
+      // Se usuário preferiu reduzir movimento ou save-data, não tentaremos autoplay
+      if (state.reducedMotion || state.saveData) {
+        log('Reduced-motion ou Save-Data ativo: não tentar autoplay', 'info');
+      }
+
+      this.setupListeners();
+      this.createObserver();
+
       return true;
     },
 
-    setupVideo() {
-      // Configurar atributos otimizados
-      this.video.preload = CONFIG.video.preload;
-      this.video.muted = true; // Essencial para autoplay
-      this.video.playsInline = true;
-      this.video.setAttribute('playsinline', ''); // iOS Safari
+    createObserver() {
+      // guarda observer para eventual destroy
+      if (this.observer) return;
 
-      // Otimização para performance
-      if ('requestVideoFrameCallback' in this.video) {
-        this.video.requestVideoFrameCallback(() => {
-          utils.log('Video frame callback disponível');
-        });
-      }
-    },
-
-    attachEventListeners() {
-      // Evento: vídeo começou a carregar
-      this.video.addEventListener('loadstart', () => {
-        utils.log('Carregamento iniciado');
-        this.showLoading();
-      });
-
-      // Evento: metadados carregados
-      this.video.addEventListener('loadedmetadata', () => {
-        utils.log('Metadados carregados');
-      });
-
-      // Evento: pode começar a reproduzir
-      this.video.addEventListener('canplay', () => {
-        utils.log('Vídeo pronto para reprodução', 'success');
-        state.videoLoaded = true;
-        this.hideLoading();
-        this.video.classList.add('loaded');
-      });
-
-      // Evento: reproduzindo
-      this.video.addEventListener('playing', () => {
-        utils.log('Vídeo reproduzindo', 'success');
-        state.videoPlaying = true;
-        this.hideFallback();
-        PlayButtonManager.hide();
-      });
-
-      // Evento: pausado
-      this.video.addEventListener('pause', () => {
-        utils.log('Vídeo pausado');
-        state.videoPlaying = false;
-      });
-
-      // Evento: erro
-      this.video.addEventListener('error', (e) => {
-        const error = this.video.error;
-        utils.log(`Erro no vídeo: ${error ? error.message : 'Erro desconhecido'}`, 'error');
-        this.handleError();
-      });
-
-      // Evento: aguardando dados
-      this.video.addEventListener('waiting', () => {
-        utils.log('Vídeo aguardando dados...');
-      });
-
-      // Evento: pode reproduzir completamente
-      this.video.addEventListener('canplaythrough', () => {
-        utils.log('Vídeo pode reproduzir completamente');
-      });
-    },
-
-    async load() {
-      if (state.videoLoaded) return Promise.resolve();
-
-      try {
-        utils.log('Iniciando carregamento do vídeo...');
-        this.video.preload = 'auto';
-        this.video.load();
-
-        await utils.createLoadPromise(this.video, 'canplay');
-        utils.log('Vídeo carregado com sucesso', 'success');
-        return Promise.resolve();
-      } catch (error) {
-        utils.log(`Falha no carregamento: ${error.message}`, 'error');
-        throw error;
-      }
-    },
-
-    async play() {
-      try {
-        if (!state.videoLoaded) {
-          await this.load();
-        }
-
-        // Garantir que está mudo para autoplay
-        this.video.muted = true;
-
-        utils.log('Tentando reproduzir vídeo...');
-        await this.video.play();
-
-        utils.log('Vídeo reproduzindo com sucesso', 'success');
-        return true;
-      } catch (error) {
-        utils.log(`Falha na reprodução: ${error.message}`, 'warn');
-        PlayButtonManager.show();
-        return false;
-      }
-    },
-
-    pause() {
-      if (this.video && state.videoPlaying) {
-        this.video.pause();
-      }
-    },
-
-    showLoading() {
-      const loading = utils.getElement(CONFIG.loading.selector);
-      utils.animateElement(loading, 'visible', true);
-    },
-
-    hideLoading() {
-      const loading = utils.getElement(CONFIG.loading.selector);
-      utils.animateElement(loading, 'visible', false);
-    },
-
-    hideFallback() {
-      const fallback = utils.getElement(CONFIG.fallback.selector);
-      utils.animateElement(fallback, 'hidden', false);
-    },
-
-    showFallback() {
-      const fallback = utils.getElement(CONFIG.fallback.selector);
-      utils.animateElement(fallback, 'hidden', false);
-    },
-
-    handleError() {
-      utils.log('Tratando erro do vídeo...', 'error');
-      this.hideLoading();
-      PlayButtonManager.hide();
-      this.showFallback();
-
-      // Reportar erro se analytics disponível
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'video_error', {
-          event_category: 'Hero Video',
-          event_label: 'Load Failed'
-        });
-      }
-    }
-  };
-
-  // Gerenciador do botão de play
-  const PlayButtonManager = {
-    button: null,
-
-    init() {
-      this.button = utils.getElement(CONFIG.playButton.selector);
-      if (!this.button) {
-        this.createButton();
-      }
-
-      if (this.button) {
-        this.attachEventListener();
-        utils.log('PlayButtonManager inicializado');
-      }
-    },
-
-    createButton() {
-      utils.log('Criando botão de play dinamicamente...');
-
-      this.button = document.createElement('button');
-      this.button.id = 'heroPlayButton';
-      this.button.className = CONFIG.playButton.className;
-      this.button.setAttribute('aria-label', 'Reproduzir vídeo');
-      this.button.innerHTML = '<i class="fas fa-play"></i>';
-
-      // Adicionar ao hero
-      const hero = document.querySelector('.hero');
-      if (hero) {
-        hero.appendChild(this.button);
-        elements.set(CONFIG.playButton.selector, this.button);
-      }
-    },
-
-    attachEventListener() {
-      if (!this.button) return;
-
-      this.button.addEventListener('click', async (e) => {
-        e.preventDefault();
-        utils.log('Botão de play clicado');
-
-        // Feedback visual imediato
-        this.button.style.transform = 'translate(-50%, -50%) scale(0.95)';
-        setTimeout(() => {
-          this.button.style.transform = '';
-        }, 150);
-
-        try {
-          const success = await VideoManager.play();
-          if (success) {
-            state.userInteracted = true;
-          }
-        } catch (error) {
-          utils.log(`Erro ao reproduzir via botão: ${error.message}`, 'error');
-        }
-      });
-    },
-
-    show() {
-      if (this.button) {
-        utils.animateElement(this.button, 'visible', true);
-        utils.log('Botão de play mostrado');
-      }
-    },
-
-    hide() {
-      if (this.button) {
-        utils.animateElement(this.button, 'visible', false);
-        utils.log('Botão de play oculto');
-      }
-    }
-  };
-
-  // Gerenciador de intersecção (lazy loading)
-  const IntersectionManager = {
-    observer: null,
-
-    init() {
       if (!('IntersectionObserver' in window)) {
-        utils.log('IntersectionObserver não suportado, carregando imediatamente', 'warn');
-        this.loadVideo();
+        // sem observer: carrega imediatamente se apropriado
+        log('IntersectionObserver não suportado — carregando imediatamente', 'warn');
+        this.onIntersect();
         return;
       }
 
-      this.observer = new IntersectionObserver(
-        this.handleIntersection.bind(this),
-        {
-          root: null,
-          rootMargin: CONFIG.intersection.rootMargin,
-          threshold: CONFIG.intersection.threshold
-        }
-      );
-
-      const video = VideoManager.video;
-      if (video) {
-        this.observer.observe(video);
-        utils.log('IntersectionObserver configurado');
-      }
-    },
-
-    handleIntersection(entries) {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !state.intersectionTriggered) {
-          utils.log('Vídeo entrou na viewport, iniciando carregamento...', 'success');
-          state.intersectionTriggered = true;
-          this.loadVideo();
-          this.observer.disconnect();
-        }
-      });
-    },
-
-    async loadVideo() {
       try {
-        await VideoManager.load();
-
-        // Decidir se deve tentar autoplay
-        const shouldAutoplay = this.shouldAttemptAutoplay();
-
-        if (shouldAutoplay) {
-          setTimeout(async () => {
-            const success = await VideoManager.play();
-            if (!success) {
-              PlayButtonManager.show();
+        this.observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio >= (CONFIG.intersection.threshold || 0)) {
+              this.onIntersect();
             }
-          }, CONFIG.video.autoplayDelay);
+          });
+        }, CONFIG.intersection);
+
+        this.observer.observe(this.video);
+      } catch (e) {
+        log('Erro criando IntersectionObserver: ' + e.message, 'warn');
+        // fallback
+        this.onIntersect();
+      }
+    },
+
+    onIntersect() {
+      if (state.intersectionSeen) return;
+      state.intersectionSeen = true;
+
+      // Se reduzido ou save-data, não carrega automaticamente
+      if (state.reducedMotion || state.saveData) {
+        log('skip load on intersect due to reduced-motion or save-data', 'info');
+        return;
+      }
+
+      // tenta carregar sources
+      loadVideoSources(this.video).then(() => {
+        state.loaded = true;
+        log('Sources do vídeo carregadas com sucesso', 'info');
+
+        // tenta autoplay se o usuário não interagiu e não há preferência por reduzir movimento
+        if (!state.userInteracted && !state.reducedMotion) {
+          // pequena pausa para permitir que layout já esteja pronto
+          setTimeout(() => {
+            // Only try autoplay if video element supports it
+            if (!this.video) return;
+            this.video.muted = true; // mutar para aumentar chances de autoplay
+            const playPromise = this.video.play && this.video.play();
+            if (playPromise && typeof playPromise.then === 'function') {
+              playPromise.then(() => {
+                state.playing = true;
+                if (this.fallback) hideElement(this.fallback);
+                if (this.playBtn) hideElement(this.playBtn);
+                log('Autoplay iniciado', 'info');
+              }).catch(err => {
+                // autoplay falhou (normal em navegadores que exigem interação)
+                log('Autoplay falhou: ' + (err && err.message), 'warn');
+                // mostra botão para que usuário possa iniciar
+                if (this.playBtn) showElement(this.playBtn);
+                // restaura muted se não quisermos vídeo mudo depois do clique
+              });
+            }
+          }, CONFIG.autoplayDelay);
         } else {
-          PlayButtonManager.show();
+          // mostra botão de play para interação do usuário
+          if (this.playBtn) showElement(this.playBtn);
         }
-      } catch (error) {
-        utils.log(`Erro no carregamento via intersecção: ${error.message}`, 'error');
-        VideoManager.handleError();
-      }
-    },
-
-    shouldAttemptAutoplay() {
-      // Não tentar autoplay em mobile para economizar dados
-      if (state.isMobile) {
-        utils.log('Mobile detectado, mostrando botão de play');
-        return false;
-      }
-
-      // Respeitar preferências de movimento reduzido
-      if (state.reducedMotion) {
-        utils.log('Movimento reduzido detectado, mostrando botão de play');
-        return false;
-      }
-
-      // Verificar se conexão é lenta
-      if ('connection' in navigator) {
-        const conn = navigator.connection;
-        if (conn.effectiveType === 'slow-2g' || conn.effectiveType === '2g') {
-          utils.log('Conexão lenta detectada, mostrando botão de play');
-          return false;
-        }
-      }
-
-      return true;
-    }
-  };
-
-  // Gerenciador de eventos globais
-  const EventManager = {
-    init() {
-      this.setupUserInteractionHandlers();
-      this.setupVisibilityHandlers();
-      this.setupResizeHandlers();
-      utils.log('EventManager inicializado');
-    },
-
-    setupUserInteractionHandlers() {
-      const events = ['click', 'touchstart', 'keydown'];
-      const handler = () => {
-        state.userInteracted = true;
-
-        // Tentar reproduzir vídeo após primeira interação
-        if (state.videoLoaded && !state.videoPlaying) {
-          VideoManager.play();
-        }
-
-        // Remover listeners após primeira interação
-        events.forEach(event => {
-          document.removeEventListener(event, handler);
-        });
-
-        utils.log('Primeira interação do usuário detectada');
-      };
-
-      events.forEach(event => {
-        document.addEventListener(event, handler, { passive: true, once: true });
+      }).catch(err => {
+        log('Erro carregando sources: ' + (err && err.message), 'warn');
+        // mostra fallback e botão
+        if (this.fallback) showElement(this.fallback);
+        if (this.playBtn) showElement(this.playBtn);
       });
     },
 
-    setupVisibilityHandlers() {
-      // Pausar vídeo quando página não está visível (economizar recursos)
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden && state.videoPlaying) {
-          VideoManager.pause();
-          utils.log('Página oculta, vídeo pausado');
-        } else if (!document.hidden && state.userInteracted && state.videoLoaded) {
-          VideoManager.play();
-          utils.log('Página visível, retomando vídeo');
-        }
-      });
-    },
+    setupListeners() {
+      // Guard rails
+      if (!this.video) return;
 
-    setupResizeHandlers() {
-      const debouncedResize = utils.debounce(() => {
-        const wasMobile = state.isMobile;
-        utils.checkMobile();
+      // Play button handler (user gesture)
+      if (this.playBtn) {
+        const onPlayBtnClick = (e) => {
+          e && e.preventDefault && e.preventDefault();
+          state.userInteracted = true;
 
-        // Se mudou de desktop para mobile durante reprodução
-        if (!wasMobile && state.isMobile && state.videoPlaying) {
-          VideoManager.pause();
-          PlayButtonManager.show();
-          utils.log('Mudança para mobile detectada, pausando vídeo');
-        }
-      }, 250);
+          // guard: se já está carregando, não iniciar outro
+          if (state.inFlightLoad) {
+            log('load já em andamento; aguardando', 'info');
+            return;
+          }
 
-      window.addEventListener('resize', debouncedResize, { passive: true });
-    }
-  };
-
-  // Gerenciador de performance
-  const PerformanceManager = {
-    startTime: performance.now(),
-
-    init() {
-      this.monitorCoreWebVitals();
-      this.logInitializationTime();
-    },
-
-    logInitializationTime() {
-      const initTime = performance.now() - this.startTime;
-      utils.log(`Inicialização completada em ${initTime.toFixed(2)}ms`);
-    },
-
-    monitorCoreWebVitals() {
-      // Monitorar CLS (Cumulative Layout Shift)
-      if ('PerformanceObserver' in window) {
-        try {
-          new PerformanceObserver((list) => {
-            list.getEntries().forEach((entry) => {
-              if (entry.entryType === 'layout-shift' && !entry.hadRecentInput) {
-                utils.log(`Layout Shift detectado: ${entry.value.toFixed(4)}`);
+          loadVideoSources(this.video).catch(err => {
+            log('Erro carregando sources no click: ' + (err && err.message), 'warn');
+          }).finally(() => {
+            try { showElement(this.video); } catch (e) { /* ignore */ }
+            // tenta play (com muted=false para som se permitido)
+            try {
+              // preferir tentar tocar sem muted se user clicou
+              this.video.muted = false;
+              const p = this.video.play && this.video.play();
+              if (p && typeof p.then === 'function') {
+                p.then(() => {
+                  state.playing = true;
+                  if (this.fallback) hideElement(this.fallback);
+                  if (this.playBtn) {
+                    hideElement(this.playBtn);
+                    this.playBtn.setAttribute('aria-pressed', 'true');
+                  }
+                }).catch(err => {
+                  log('Erro ao tentar play após clique: ' + (err && err.message), 'error');
+                });
               }
-            });
-          }).observe({ type: 'layout-shift', buffered: true });
-        } catch (e) {
-          // PerformanceObserver não suportado completamente
-        }
+            } catch (errPlay) {
+              log('Erro ao tentar play: ' + (errPlay && errPlay.message), 'error');
+            }
+          });
+        };
+
+        this.playBtn.addEventListener('click', onPlayBtnClick);
+        this.listeners.push({ el: this.playBtn, type: 'click', fn: onPlayBtnClick });
       }
 
-      // Monitorar tempo de carregamento total
-      window.addEventListener('load', () => {
-        setTimeout(() => {
-          if ('performance' in window && performance.getEntriesByType) {
-            const perfData = performance.getEntriesByType('navigation')[0];
-            if (perfData) {
-              const loadTime = perfData.loadEventEnd - perfData.fetchStart;
-              utils.log(`Página carregada em ${loadTime.toFixed(0)}ms`, 'success');
+      // Fallback click -> forward to play button
+      if (this.fallback && this.playBtn) {
+        const onFallbackClick = (e) => {
+          e && e.preventDefault && e.preventDefault();
+          // se botão existe, aciona
+          try { this.playBtn && this.playBtn.click(); } catch (e) { /* ignore */ }
+        };
+        this.fallback.addEventListener('click', onFallbackClick);
+        this.listeners.push({ el: this.fallback, type: 'click', fn: onFallbackClick });
+
+        // tornar fallback keyboard-accessible se não estiver
+        try {
+          if (!this.fallback.hasAttribute('tabindex')) this.fallback.setAttribute('tabindex', '0');
+          if (!this.fallback.getAttribute('role')) this.fallback.setAttribute('role', 'button');
+          this.fallback.addEventListener('keydown', (ev) => {
+            if (ev.key === 'Enter' || ev.key === ' ') {
+              ev.preventDefault();
+              onFallbackClick(ev);
+            }
+          });
+        } catch (e) { /* ignore */ }
+      }
+
+      // Pause/resume on visibility change
+      const onVisibility = () => {
+        if (!this.video) return;
+        if (document.hidden && state.playing) {
+          try { this.video.pause(); } catch (e) { /* ignore */ }
+        } else if (!document.hidden && state.userInteracted && !state.reducedMotion) {
+          try { this.video.play && this.video.play().catch(() => { }); } catch (e) { /* ignore */ }
+        }
+      };
+      document.addEventListener('visibilitychange', onVisibility);
+      this.listeners.push({ el: document, type: 'visibilitychange', fn: onVisibility });
+
+      // Optional: cleanup when video is removed from DOM
+      const mutationHandler = (mutations) => {
+        for (const m of mutations) {
+          if (m.removedNodes && m.removedNodes.length) {
+            for (const n of m.removedNodes) {
+              if (n === this.video) {
+                // video removed — destroy manager
+                this.destroy();
+                return;
+              }
             }
           }
-        }, 0);
+        }
+      };
+      try {
+        const mo = new MutationObserver(mutationHandler);
+        mo.observe(document.body || document.documentElement, { childList: true, subtree: true });
+        // store so we can disconnect later
+        this._mutationObserver = mo;
+      } catch (e) {
+        // ignore if not available
+      }
+    },
+
+    // Remove listeners/observer/obras para evitar leaks
+    destroy() {
+      // remove listeners
+      (this.listeners || []).forEach(item => {
+        try { item.el.removeEventListener(item.type, item.fn); } catch (e) { /* ignore */ }
       });
+      this.listeners = [];
+
+      // disconnect intersection observer
+      if (this.observer) {
+        try { this.observer.disconnect(); } catch (e) { /* ignore */ }
+        this.observer = null;
+      }
+
+      // disconnect mutation observer
+      if (this._mutationObserver) {
+        try { this._mutationObserver.disconnect(); } catch (e) { /* ignore */ }
+        this._mutationObserver = null;
+      }
+
+      // null references
+      this.video = null;
+      this.fallback = null;
+      this.playBtn = null;
+      this.loading = null;
+
+      // reset state flags if necessário
+      state.loaded = false;
+      state.playing = false;
+      state.intersectionSeen = false;
+      state.inFlightLoad = false;
+
+      log('Manager destruído e listeners removidos', 'info');
     }
   };
 
-  // Inicialização principal
-  function initialize() {
-    utils.log('Iniciando Hero Video Manager...');
-
-    // Verificar estados iniciais
-    utils.checkMobile();
-    utils.checkReducedMotion();
-
-    // Inicializar gerenciadores na ordem correta
-    PerformanceManager.init();
-
-    if (VideoManager.init()) {
-      PlayButtonManager.init();
-      IntersectionManager.init();
-      EventManager.init();
-
-      utils.log('Todos os gerenciadores inicializados com sucesso', 'success');
-    } else {
-      utils.log('Falha na inicialização do VideoManager', 'error');
-    }
+  // Inicializa quando DOM pronto
+  function boot() {
+    detectEnvironment();
+    Manager.init();
   }
 
-  // Executar quando DOM estiver pronto
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initialize);
+    document.addEventListener('DOMContentLoaded', boot);
   } else {
-    initialize();
+    boot();
   }
 
-  // Expor API pública para debug (apenas em desenvolvimento)
-  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    window.HeroVideoDebug = {
-      VideoManager,
-      PlayButtonManager,
-      state,
-      utils
-    };
-    utils.log('Debug API exposta em window.HeroVideoDebug');
-  }
+  // Expor para debug em localhost/127.0.0.1
+  try {
+    if (window.location && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+      window.HeroVideoManager = { Manager, state };
+      log('HeroVideoManager exposto em window.HeroVideoManager (apenas localhost)', 'info');
+    }
+  } catch (e) { /* ignore */ }
 
 })();

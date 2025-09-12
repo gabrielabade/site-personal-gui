@@ -19,7 +19,6 @@
 
   <!-- Preload de recursos críticos -->
   <link rel="preload" href="images/webp/image1-900.webp" as="image" fetchpriority="high">
-  <link rel="preload" href="images/originais/video.mp4" as="video" fetchpriority="low" media="(min-width: 768px)">
 
   <!-- Preconnect para fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -103,33 +102,33 @@
   <!-- HERO OTIMIZADO -->
   <section class="hero" id="home" aria-label="Seção inicial - Apresentação do personal">
     <div class="hero-bg" aria-hidden="true">
-      <!-- Loading Spinner -->
-      <div class="video-loading" id="videoLoading">
-        <div class="loading-spinner"></div>
+      <!-- Loading Spinner (inicialmente oculto) -->
+      <div class="video-loading" id="videoLoading" aria-hidden="true" style="display:none">
+        <div class="loading-spinner" aria-hidden="true"></div>
       </div>
-      <!-- Vídeo principal com versões otimizadas -->
-      <video id="heroVideo" class="hero-video" playsinline muted loop preload="none" tabindex="-1" aria-hidden="true"
-        crossorigin="anonymous">
+      <!-- Vídeo principal (apenas 1 elemento video; sources usam data-src para lazy-load) -->
+      <video id="heroVideo" class="hero-video" playsinline muted loop preload="metadata"
+        poster="images/jpg/video-poster.jpg" <!-- opcional: substitua por versão leve -->
+        tabindex="-1"
+        aria-hidden="true"
+        crossorigin="anonymous"
+        style="display:none"> <!-- escondido até o JS mostrar -->
         <!-- Mobile: versão leve (480p) -->
-        <source src="images/originais/video-480.mp4" type="video/mp4" media="(max-width: 767px)">
-
-        <!-- Desktop/Tablet: versão média (720p) -->
-        <source src="images/originais/video-720.mp4" type="video/mp4"
+        <source data-src="images/originais/video-480.mp4" type="video/mp4" media="(max-width: 767px)">
+        <!-- Tablet/Small desktop: versão média (720p) -->
+        <source data-src="images/originais/video-720.mp4" type="video/mp4"
           media="(min-width: 768px) and (max-width: 1439px)">
-
-        <!-- Fallback: vídeo original (somente telas grandes) -->
-        <source src="images/originais/video.mp4" type="video/mp4" media="(min-width: 1440px)">
-
+        <!-- Desktop: fallback / original -->
+        <source data-src="images/originais/video.mp4" type="video/mp4" media="(min-width: 1440px)">
         Seu navegador não suporta vídeo.
       </video>
 
-
-      <!-- Botão de play otimizado -->
-      <button id="heroPlayButton" class="hero-play-fallback" aria-label="Reproduzir vídeo">
-        <i class="fas fa-play"></i>
+      <!-- Botão de play (único, inicialmente oculto; o script o exibirá se autoplay for bloqueado) -->
+      <button id="heroPlayButton" class="hero-play-fallback" aria-label="Reproduzir vídeo" style="display:none">
+        <i class="fas fa-play" aria-hidden="true"></i>
       </button>
 
-      <!-- Fallback otimizado com responsive images -->
+      <!-- Fallback otimizado com responsive images (picture) -->
       <picture class="hero-fallback" id="heroFallback" role="img" aria-hidden="true">
         <!-- Desktop: WebP -->
         <source media="(min-width:1024px)" type="image/webp"
@@ -137,21 +136,19 @@
         <!-- Desktop: JPEG -->
         <source media="(min-width:1024px)" type="image/jpeg"
           srcset="images/jpg/image20-1600.jpg 1600w, images/jpg/image20-900.jpg 900w" sizes="100vw">
-
         <!-- Mobile: WebP -->
         <source media="(max-width:1023px)" type="image/webp"
           srcset="images/webp/image1-900.webp 900w, images/webp/image1-480.webp 480w" sizes="100vw">
         <!-- Mobile: JPEG -->
         <source media="(max-width:1023px)" type="image/jpeg"
           srcset="images/jpg/image1-900.jpg 900w, images/jpg/image1-480.jpg 480w" sizes="100vw">
-
         <!-- Imagem fallback final -->
-        <img src="images/jpg/image20-900.jpg"
-          alt="Guilherme Matheus – Personal Trainer em Barretos: corpo inteiro no treino (desktop) ou em pé braços cruzados (mobile)"
-          loading="eager" decoding="async" width="1600" height="900">
+        <img src="images/jpg/image20-900.jpg" alt="Guilherme Matheus – Personal Trainer em Barretos" loading="eager"
+          decoding="async" width="1600" height="900">
       </picture>
 
       <div class="hero-overlay" aria-hidden="true"></div>
+
     </div>
 
     <!-- Conteúdo visível do hero (texto e CTAs) -->
@@ -189,6 +186,7 @@
           <a class="btn btn-secondary btn-large" href="/servicos.html">Conhecer Serviços</a>
         </div>
       </div>
+
     </div>
   </section>
   <!-- /HERO OTIMIZADO -->
@@ -293,7 +291,8 @@
               alunos."</p>
           </div>
           <div class="testimonial-author">
-            <img src="images/depoimento-1.jpg" alt="Cliente satisfeita">
+            <img src="images/depoimento-1.jpg" alt="Cliente satisfeita" loading="lazy" decoding="async" width="120"
+              height="120" class="testimonial-thumb">
             <div>
               <h4>Maria Silva</h4>
               <span>Perdeu 15kg</span>
@@ -305,7 +304,8 @@
             <p>"Ganhei mais de 8kg de massa muscular! O Guilherme é muito dedicado e conhece muito do que faz."</p>
           </div>
           <div class="testimonial-author">
-            <img src="images/depoimento-2.jpg" alt="Cliente satisfeito">
+            <img src="images/depoimento-2.jpg" alt="Cliente satisfeito" loading="lazy" decoding="async" width="120"
+              height="120" class="testimonial-thumb">
             <div>
               <h4>João Santos</h4>
               <span>Ganhou 8kg de músculo</span>
@@ -378,7 +378,7 @@
 
   <!-- Scripts -->
   <script src="js/hero-video.js" defer></script>
-  <script src="js/script.js"></script>
+  <script src="js/script.js" defer></script>
 
 </body>
 
