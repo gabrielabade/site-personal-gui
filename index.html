@@ -83,16 +83,12 @@
     </nav>
   </header>
 
-
-  <!-- Preload do poster para evitar CLS -->
-  <link rel="preload" as="image" href="images/webp/video-poster.webp">
-
   <!-- HERO OTIMIZADO -->
   <section class="hero" id="home" aria-label="Seção inicial - Apresentação do personal">
     <div class="hero-bg" aria-hidden="true">
       <!-- Vídeo principal (lazy-load via data-src) -->
-      <video id="heroVideo" class="hero-video" playsinline muted loop preload="metadata"
-        poster="images/webp/video-poster.webp" tabindex="-1" aria-hidden="true" crossorigin="anonymous">
+      <video id="heroVideo" class="hero-video" playsinline muted loop preload="metadata" tabindex="-1"
+        aria-hidden="true" crossorigin="anonymous">
         <!-- Mantemos data-src para carregamento controlado via JS -->
         <source data-src="images/originais/video.mp4" type="video/mp4">
         Seu navegador não suporta vídeo.
@@ -108,21 +104,21 @@
         <!-- Desktop: WebP -->
         <source media="(min-width:1024px)" type="image/webp"
           srcset="images/webp/image20-1600.webp 1600w, images/webp/image20-900.webp 900w">
-        <!-- Desktop: JPEG fallback -->
+        <!-- Desktop: JPEG -->
         <source media="(min-width:1024px)" type="image/jpeg"
           srcset="images/jpj/image20-1600.jpg 1600w, images/jpj/image20-900.jpg 900w">
 
         <!-- Mobile: WebP -->
         <source media="(max-width:1023px)" type="image/webp"
-          srcset="images/webp/image30-900.webp 900w, images/webp/image30-480.webp 480w">
-        <!-- Mobile: JPEG fallback -->
+          srcset="images/webp/image1-900.webp 900w, images/webp/image1-480.webp 480w">
+        <!-- Mobile: JPEG -->
         <source media="(max-width:1023px)" type="image/jpeg"
-          srcset="images/jpj/image30-900.jpg 900w, images/jpj/image30-480.jpg 480w">
+          srcset="images/jpj/image1-900.jpg 900w, images/jpj/image1-480.jpg 480w">
 
-        <!-- img de fallback definitivo (sempre colocar alt descritivo) -->
+        <!-- Imagem fallback final -->
         <img src="images/jpj/image20-900.jpg"
-          alt="Guilherme Matheus em ambiente de treino profissional — personal trainer em Barretos" loading="eager"
-          decoding="sync" width="1600" height="900">
+          alt="Guilherme Matheus — Personal Trainer em Barretos: corpo inteiro no treino (desktop) ou em pé braços cruzados (mobile)"
+          loading="eager" decoding="sync" width="1600" height="900">
       </picture>
 
       <div class="hero-overlay" aria-hidden="true"></div>
@@ -139,7 +135,7 @@
         </h1>
 
         <p class="hero-subtitle">
-          Personal Trainer especializado em Hipertrofia e Emagrecimento em Barretos‑SP.
+          Personal Trainer especializado em Hipertrofia e Emagrecimento em Barretos-SP.
           Atendimento presencial e online com treinos 100% personalizados.
         </p>
 
@@ -166,7 +162,6 @@
     </div>
   </section>
   <!-- /HERO OTIMIZADO -->
-
 
 
   <!-- Benefícios Section -->
