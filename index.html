@@ -13,13 +13,14 @@
   <!-- Open Graph -->
   <meta property="og:title" content="Guilherme Matheus - Personal Trainer">
   <meta property="og:description" content="Treinos que transformam corpo e mente">
-  <meta property="og:image" content="images/gui-hero.jpg">
+  <meta property="og:image" content="images/logo.png">
+  <meta property="og:url" content="https://personalguimatheus.com.br">
   <meta property="og:type" content="website">
 
-  <!-- Preload de recursos críticos -->
-  <link rel="preload" href="images/webp/image1-900.webp" as="image" type="image/webp">
-  <link rel="preload" href="css/style.css" as="style">
-  <link rel="preload" href="js/hero-video.js" as="script">
+  <!-- Preload de recursos críticos - otimizado -->
+  <link rel="preload" href="images/webp/image1-900.webp" as="image" type="image/webp" media="(max-width: 1023px)">
+  <link rel="preload" href="images/webp/image20-1600.webp" as="image" type="image/webp" media="(min-width: 1024px)">
+  <link rel="preload" href="images/originais/video.mp4" as="video" type="video/mp4">
 
   <!-- Preconnect para fontes e CDNs -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,39 +87,43 @@
   <!-- HERO OTIMIZADO -->
   <section class="hero" id="home" aria-label="Seção inicial - Apresentação do personal">
     <div class="hero-bg" aria-hidden="true">
-      <!-- Vídeo principal (lazy-load via data-src) -->
-      <video id="heroVideo" class="hero-video" playsinline muted loop preload="metadata" tabindex="-1"
-        aria-hidden="true" crossorigin="anonymous">
-        <!-- Mantemos data-src para carregamento controlado via JS -->
-        <source data-src="images/originais/video.mp4" type="video/mp4">
+      <!-- Loading Spinner -->
+      <div class="video-loading" id="videoLoading">
+        <div class="loading-spinner"></div>
+      </div>
+
+      <!-- Vídeo principal com carregamento otimizado -->
+      <video id="heroVideo" class="hero-video" playsinline muted loop preload="none" tabindex="-1" aria-hidden="true"
+        crossorigin="anonymous">
+        <source src="images/originais/video.mp4" type="video/mp4">
         Seu navegador não suporta vídeo.
       </video>
 
-      <!-- Botão de play exibido caso autoplay seja bloqueado -->
-      <button id="heroPlayFallback" class="hero-play-fallback" aria-hidden="true" aria-label="Reproduzir vídeo">
-        ▶️ Ver vídeo
+      <!-- Botão de play otimizado -->
+      <button id="heroPlayButton" class="hero-play-button" aria-label="Reproduzir vídeo">
+        <i class="fas fa-play"></i>
       </button>
 
-      <!-- Fallback estratégico (picture) -->
-      <picture class="hero-fallback" role="img" aria-hidden="true">
+      <!-- Fallback otimizado com responsive images -->
+      <picture class="hero-fallback" id="heroFallback" role="img" aria-hidden="true">
         <!-- Desktop: WebP -->
         <source media="(min-width:1024px)" type="image/webp"
-          srcset="images/webp/image20-1600.webp 1600w, images/webp/image20-900.webp 900w">
+          srcset="images/webp/image20-1600.webp 1600w, images/webp/image20-900.webp 900w" sizes="100vw">
         <!-- Desktop: JPEG -->
         <source media="(min-width:1024px)" type="image/jpeg"
-          srcset="images/jpj/image20-1600.jpg 1600w, images/jpj/image20-900.jpg 900w">
+          srcset="images/jpj/image20-1600.jpg 1600w, images/jpj/image20-900.jpg 900w" sizes="100vw">
 
         <!-- Mobile: WebP -->
         <source media="(max-width:1023px)" type="image/webp"
-          srcset="images/webp/image1-900.webp 900w, images/webp/image1-480.webp 480w">
+          srcset="images/webp/image1-900.webp 900w, images/webp/image1-480.webp 480w" sizes="100vw">
         <!-- Mobile: JPEG -->
         <source media="(max-width:1023px)" type="image/jpeg"
-          srcset="images/jpj/image1-900.jpg 900w, images/jpj/image1-480.jpg 480w">
+          srcset="images/jpj/image1-900.jpg 900w, images/jpj/image1-480.jpg 480w" sizes="100vw">
 
         <!-- Imagem fallback final -->
         <img src="images/jpj/image20-900.jpg"
-          alt="Guilherme Matheus — Personal Trainer em Barretos: corpo inteiro no treino (desktop) ou em pé braços cruzados (mobile)"
-          loading="eager" decoding="sync" width="1600" height="900">
+          alt="Guilherme Matheus – Personal Trainer em Barretos: corpo inteiro no treino (desktop) ou em pé braços cruzados (mobile)"
+          loading="eager" decoding="async" width="1600" height="900">
       </picture>
 
       <div class="hero-overlay" aria-hidden="true"></div>
