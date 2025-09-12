@@ -17,6 +17,19 @@
   <meta property="og:url" content="https://personalguimatheus.com.br">
   <meta property="og:type" content="website">
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Guilherme Matheus - Personal Trainer">
+  <meta property="og:description" content="Treinos que transformam corpo e mente">
+  <meta property="og:image" content="images/webp/image1-900.webp">
+  <meta property="og:type" content="website">
+
+  <!-- Preload de recursos críticos -->
+  <link rel="preload" href="images/webp/image1-900.webp" as="image" fetchpriority="high">
+  <link rel="preload" href="images/originais/video.mp4" as="video" fetchpriority="low" media="(min-width: 768px)">
+
+  <!-- Preconnect para fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
@@ -26,7 +39,24 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css" media="all">
+
+  <!-- Meta tags de performance -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Guilherme Matheus">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Guilherme Matheus">
+  <meta name="apple-touch-fullscreen" content="yes">
+
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
   <!-- Schema Markup -->
   <script type="application/ld+json">
