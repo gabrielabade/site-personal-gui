@@ -16,12 +16,21 @@
   <meta property="og:image" content="images/gui-hero.jpg">
   <meta property="og:type" content="website">
 
+  <!-- Preload de recursos críticos -->
+  <link rel="preload" href="images/webp/image1-900.webp" as="image" type="image/webp">
+  <link rel="preload" href="css/style.css" as="style">
+  <link rel="preload" href="js/hero-video.js" as="script">
+
+  <!-- Preconnect para fontes e CDNs -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
+    rel="stylesheet" preload>
 
   <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" preload>
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
