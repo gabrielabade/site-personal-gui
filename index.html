@@ -108,18 +108,18 @@
       </div>
       <!-- Vídeo principal (apenas 1 elemento video; sources usam data-src para lazy-load) -->
       <video id="heroVideo" class="hero-video" playsinline muted loop preload="metadata"
-        poster="images/jpg/video-poster.jpg" <!-- opcional: substitua por versão leve -->
+        poster="images/jpg/video-poster.jpg"
         tabindex="-1"
         aria-hidden="true"
         crossorigin="anonymous"
         style="display:none"> <!-- escondido até o JS mostrar -->
         <!-- Mobile: versão leve (480p) -->
-        <source data-src="images/originais/video-480.mp4" type="video/mp4" media="(max-width: 767px)">
+        <source data-src="images/originais/video-480.mp4#t=0.001" type="video/mp4" media="(max-width: 767px)">
         <!-- Tablet/Small desktop: versão média (720p) -->
-        <source data-src="images/originais/video-720.mp4" type="video/mp4"
+        <source data-src="images/originais/video-720.mp4#t=0.001" type="video/mp4"
           media="(min-width: 768px) and (max-width: 1439px)">
         <!-- Desktop: fallback / original -->
-        <source data-src="images/originais/video.mp4" type="video/mp4" media="(min-width: 1440px)">
+        <source data-src="images/originais/video.mp4#t=0.001" type="video/mp4" media="(min-width: 1440px)">
         Seu navegador não suporta vídeo.
       </video>
 
